@@ -26,7 +26,7 @@ var TROOP_TEMPLATES = {
         archerOnly: false,
         buildType: 'defense',
     },
-    'Ataque c/ Arcos': {
+    '|ATAQUE| c/ Arcos': {
         spear: 0,
         sword: 1,
         axe: 5697,
@@ -40,7 +40,7 @@ var TROOP_TEMPLATES = {
         archerOnly: true,
         buildType: 'offense',
     },
-    'Ataque Normal': {
+    '|ATAQUE| Normal': {
         spear: 0,
         sword: 1,
         axe: 5771,
@@ -54,7 +54,7 @@ var TROOP_TEMPLATES = {
         archerOnly: false,
         buildType: 'offense',
     },
-    'Ataque Normal c/ Catas': {
+    '|ATAQUE| Normal c/ Catas': {
         spear: 0,
         sword: 1,
         axe: 5597,
@@ -68,7 +68,7 @@ var TROOP_TEMPLATES = {
         archerOnly: false,
         buildType: 'offense',
     },
-    'Ataque +10% POP': {
+    '|ATAQUE| +10% Pop': {
         spear: 0,
         sword: 1,
         axe: 6357,
@@ -82,7 +82,7 @@ var TROOP_TEMPLATES = {
         archerOnly: false,
         buildType: 'offense',
     },
-    'Ataque +20% POP': {
+    '|ATAQUE| +20% Pop': {
         spear: 0,
         sword: 1,
         axe: 6941,
@@ -96,7 +96,7 @@ var TROOP_TEMPLATES = {
         archerOnly: false,
         buildType: 'offense',
     },
-    'Ataque Bonus Estábulo': {
+    '|ATAQUE| Bonus Estabulo': {
         spear: 0,
         sword: 1,
         axe: 4637,
@@ -110,7 +110,7 @@ var TROOP_TEMPLATES = {
         archerOnly: false,
         buildType: 'offense',
     },
-    'Ataque Bonus Oficina': {
+    '|ATAQUE| Bonus Oficina': {
         spear: 0,
         sword: 1,
         axe: 4790,
@@ -124,7 +124,7 @@ var TROOP_TEMPLATES = {
         archerOnly: false,
         buildType: 'offense',
     },
-    'Defesa Front (Archers)': {
+    '|DEFESA| Front (Archers)': {
         spear: 3018,
         sword: 3018,
         axe: 0,
@@ -138,7 +138,7 @@ var TROOP_TEMPLATES = {
         archerOnly: true,
         buildType: 'defense',
     },
-    'Defesa Back (Archers)': {
+    '|DEFESA| Back (Archers)': {
         spear: 5300,
         sword: 5300,
         axe: 0,
@@ -152,7 +152,7 @@ var TROOP_TEMPLATES = {
         archerOnly: true,
         buildType: 'defense',
     },
-    'Defesa Back +10% (Archers)': {
+    '|DEFESA| Back +10% (Archers)': {
         spear: 6100,
         sword: 6100,
         axe: 0,
@@ -166,7 +166,7 @@ var TROOP_TEMPLATES = {
         archerOnly: true,
         buildType: 'defense',
     },
-    'Defesa Front': {
+    '|DEFESA| Front': {
         spear: 4532,
         sword: 4532,
         axe: 0,
@@ -180,7 +180,7 @@ var TROOP_TEMPLATES = {
         archerOnly: false,
         buildType: 'defense',
     },
-    'Defesa Back': {
+    '|DEFESA| Back': {
         spear: 7950,
         sword: 7950,
         axe: 0,
@@ -194,8 +194,7 @@ var TROOP_TEMPLATES = {
         archerOnly: false,
         buildType: 'defense',
     },
-
-
+    
 };
 
 // User Input
