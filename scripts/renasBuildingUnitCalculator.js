@@ -1841,7 +1841,7 @@ function spinMainIcon(durationMs, deg) {
         duration: durationMs,
         step: (angle) => {
             $(".gear img").css({
-                transform: 'rotate(' + angle + 'deg')
+		transform: 'rotate(' + angle + 'deg)'
             });
         }
     });
