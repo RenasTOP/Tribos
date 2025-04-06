@@ -295,7 +295,7 @@ content = `
     <td><img src=${imageSrc.wood}>&nbsp;<span id="currentBuildingsWoodCost">0</span></td>
     <td><img src=${imageSrc.stone}>&nbsp;<span id="currentBuildingsStoneCost">0</span></td>
     <td><img src=${imageSrc.iron}>&nbsp;<span id="currentBuildingsIronCost">0</span></td>
-    <td class="crosshatchedright" colspan="2">&#x21E6; Custos dos níveis atuais</td>
+    <td class="crosshatchedright" ="2">&#x21E6; Custos dos níveis atuais</td>
 </tr>
 <tr>
     <td class="crosshatchedleft">Nível mínimo:</td>
@@ -445,13 +445,13 @@ content = `
             </table>
             <table class="inlineTable bonus">
                 <tbody>
-                    <tr>
-                        <th colspan="4">KÃ©pzÃ©s bÃ³nusz<img src=${imageSrc.questionMark} title="${helpTooltip.recruit}" class="tooltip"></th>
-                        <th class="space"></th>
-                        <th colspan="2">Piac bÃ³nusz<img src=${imageSrc.questionMark} title="${helpTooltip.market}" class="tooltip"></th>
-                        <th class="space"></th>
-                        <th colspan="2">RaktÃ¡r bÃ³nusz<img src=${imageSrc.questionMark} title="${helpTooltip.storage}" class="tooltip"></th>
-                    </tr>
+              <tr>
+    <th colspan="4">Bónus de recrutamento<img src=${imageSrc.questionMark} title="${helpTooltip.recruit}" class="tooltip"></th>
+    <th class="space"></th>
+    <th colspan="2">Bónus do mercado<img src=${imageSrc.questionMark} title="${helpTooltip.market}" class="tooltip"></th>
+    <th class="space"></th>
+    <th colspan="2">Bónus do armazém<img src=${imageSrc.questionMark} title="${helpTooltip.storage}" class="tooltip"></th>
+</tr>
                     <tr>
 				        <td><img src=${imageSrc.barracks}><input class="bon" id="barracksBonus" type="number" min="0" max="500" value="0"></td>
 				        <td><img src=${imageSrc.stable}><input class="bon" id="stableBonus" type="number" min="0" max="500" value="0"></td>
