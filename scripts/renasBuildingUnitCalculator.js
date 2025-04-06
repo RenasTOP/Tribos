@@ -119,7 +119,7 @@ content = `
     <th>Pontos</th>
 </tr>
 <tr>
-    <td><img src=${imageSrc.main}>Sede</td>
+    <td><img src=${imageSrc.main}>Edificio Principal</td>
     <td><input type="number" id="headquarters" class="building" maxlength="2" min="1" max="30" autofocus></td>
     <td class="woodCost">0</td>
     <td class="stoneCost">0</td>
@@ -227,7 +227,7 @@ content = `
     <td class="points">0</td>
 </tr>
 <tr>
-    <td><img src=${imageSrc.timber_camp}>Cortador de madeira</td>
+    <td><img src=${imageSrc.timber_camp}>Bosque</td>
     <td><input type="number" id="timber_camp" class="building" maxlength="2" min="0" max="30"></td>
     <td class="woodCost">0</td>
     <td class="stoneCost">0</td>
@@ -236,7 +236,7 @@ content = `
     <td class="points">0</td>
 </tr>
 <tr>
-    <td><img src=${imageSrc.clay_pit}>Cava de argila</td>
+    <td><img src=${imageSrc.clay_pit}>Poço de Argila</td>
     <td><input type="number" id="clay_pit" class="building" maxlength="2" min="0" max="30"></td>
     <td class="woodCost">0</td>
     <td class="stoneCost">0</td>
@@ -245,7 +245,7 @@ content = `
     <td class="points">0</td>
 </tr>
 <tr>
-    <td><img src=${imageSrc.iron_mine}>Mina de ferro</td>
+    <td><img src=${imageSrc.iron_mine}>Mina de Ferro</td>
     <td><input type="number" id="iron_mine" class="building" maxlength="2" min="0" max="30"></td>
     <td class="woodCost">0</td>
     <td class="stoneCost">0</td>
@@ -254,7 +254,7 @@ content = `
     <td class="points">0</td>
 </tr>
 <tr>
-    <td><img src=${imageSrc.farm}>Quinta</td>
+    <td><img src=${imageSrc.farm}>Fazenda</td>
     <td><input type="number" id="farm" class="building" maxlength="2" min="1" max="30"></td>
     <td class="woodCost">0</td>
     <td class="stoneCost">0</td>
@@ -335,7 +335,7 @@ content = `
     <td class="pop">0</td>
 </tr>
 <tr>
-    <td><img src=${imageSrc.axe}>Bárbaro</td>
+    <td><img src=${imageSrc.axe}>Viking</td>
     <td><input type="number" id="axe" class="unit" maxlength="5" min="0" max="32000"></td>
     <td><span><span class="icon header time"></span><span class="build_time">00:00:00:00</span></span></td>
     <td class="haul">0</td>
@@ -496,15 +496,15 @@ content = `
             <th colspan="2">Propriedades dos edifícios</th>
         </tr>
         <tr>
-            <td style="width: 50%"><img src=${imageSrc.header}>Capacidade da quinta</td>
+            <td style="width: 50%"><img src=${imageSrc.header}>Capacidade TOTAL</td>
             <td class="property" id="population" style="width: 50%">0</td>
         </tr>
         <tr>
-            <td style="width: 50%"><img src=${imageSrc.header}>Espaço ocupado pela população</td>
+            <td style="width: 50%"><img src=${imageSrc.header}>Espaço ocupado</td>
             <td class="property" id="locked" style="width: 50%">0</td>
         </tr>
         <tr>
-            <td style="width: 50%"><img src=${imageSrc.header}>Espaço livre de população</td>
+            <td style="width: 50%"><img src=${imageSrc.header}>Espaço livre</td>
             <td class="property" id="free" style="width: 50%">0</td>
         </tr>
         <tr>
