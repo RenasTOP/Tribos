@@ -483,7 +483,7 @@ content = `
                 <input type="button" value="Exportar" onclick="exports()">
                 &nbsp;
                 <input type="button" value="Importar" onclick="imports()">
-                <b><code>Criado por <a href="${forumURL}" target="_blank">öreg</a></code></b>
+                <b><code>Criado por <a href="${forumURL}" target="_blank">öreg</a> e traduzido por Renas</code></b>
             </td>
         </tr>
     </tbody>
