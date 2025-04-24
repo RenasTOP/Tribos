@@ -295,7 +295,7 @@ content = `
     <td><img src=${imageSrc.wood}>&nbsp;<span id="currentBuildingsWoodCost">0</span></td>
     <td><img src=${imageSrc.stone}>&nbsp;<span id="currentBuildingsStoneCost">0</span></td>
     <td><img src=${imageSrc.iron}>&nbsp;<span id="currentBuildingsIronCost">0</span></td>
-    <td class="crosshatchedright" ="2">&#x21E6; Custos dos níveis atuais</td>
+    <td class="crosshatchedright" ="2">&#x21E6; Custos</td>
 </tr>
 <tr>
     <td class="crosshatchedleft">Nível mínimo:</td>
