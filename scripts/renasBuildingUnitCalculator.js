@@ -516,15 +516,15 @@ content = `
             <td class="property" id="hiddenResources" style="width: 50%">0</td>
         </tr>
         <tr>
-            <td style="width: 50%"><img src=${imageSrc.market}>Número de comerciantes</td>
+            <td style="width: 50%"><img src=${imageSrc.market}>Comerciantes</td>
             <td class="property" id="merchants" style="width: 50%">0</td>
         </tr>
         <tr>
-            <td style="width: 50%"><img src=${imageSrc.warehouse}>Capacidade do armazém</td>
+            <td style="width: 50%"><img src=${imageSrc.warehouse}>Capacidade armazém</td>
             <td class="property" id="capacity" style="width: 50%">0</td>
         </tr>
         <tr>
-            <td style="width: 50%"><img src=${imageSrc.wall}>Bónus defensivo da muralha</td>
+            <td style="width: 50%"><img src=${imageSrc.wall}>Bónus da muralha</td>
             <td class="property" id="wallBonus" style="width: 50%">0</td>
         </tr>
         <tr>
