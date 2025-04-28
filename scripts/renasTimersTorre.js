@@ -128,9 +128,9 @@ javascript:
                                         //console.log(commandName);
                                         if (commandName.includes("sword")) {
                                                 var remainingFields = seconds / unitSpeed[0];
-                                        } else if (commandName.includes("axe") || commandName.includes("spear")) || commandName.includes("machado")) {
+                                        } else if (commandName.includes("axe") || commandName.includes("spear") || commandName.includes("machado")) {
                                                 var remainingFields = seconds / unitSpeed[1];
-                                        } else if (commandName.includes("spy") || commandName.includes("scout")) || commandName.includes("btd")) {
+                                        } else if (commandName.includes("spy") || commandName.includes("scout") || commandName.includes("btd")) {
                                                 var remainingFields = seconds / unitSpeed[2];
                                         } else if (commandName.includes("lcav") || commandName.includes("light")) {
                                                 var remainingFields = seconds / unitSpeed[3];
@@ -138,7 +138,7 @@ javascript:
                                                 var remainingFields = seconds / unitSpeed[4];
                                         } else if (commandName.includes("ram") || commandName.includes("cat") || commandName.includes("aríete")) {
                                                 var remainingFields = seconds / unitSpeed[5];
-                                        } else if (commandName.includes("noble") || commandName.includes("snob")) || commandName.includes("nobre")) {
+                                        } else if (commandName.includes("noble") || commandName.includes("snob") || commandName.includes("nobre")) {
                                                 var remainingFields = seconds / unitSpeed[6];
                                         }
                                         //console.log(hatralevo_mezo);
