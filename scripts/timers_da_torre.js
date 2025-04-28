@@ -128,21 +128,17 @@ javascript:
                                         //console.log(commandName);
                                         if (commandName.includes("sword")) {
                                                 var remainingFields = seconds / unitSpeed[0];
-                                        } else if (commandName.includes("axe") || commandName.includes("spear")) {
+                                        } else if (commandName.includes("axe") || commandName.includes("spear")) || commandName.includes("machado")) {
                                                 var remainingFields = seconds / unitSpeed[1];
-                                        } else if (commandName.includes("spy") || commandName.includes("scout")) {
+                                        } else if (commandName.includes("spy") || commandName.includes("scout")) || commandName.includes("btd")) {
                                                 var remainingFields = seconds / unitSpeed[2];
                                         } else if (commandName.includes("lcav") || commandName.includes("light")) {
                                                 var remainingFields = seconds / unitSpeed[3];
                                         } else if (commandName.includes("hcav") || commandName.includes("heavy")) {
                                                 var remainingFields = seconds / unitSpeed[4];
-                                        } else if (
-    commandName.includes("ram") ||
-    commandName.includes("cat") ||
-    commandName.includes("aríete")    // adiciona detecção de “Aríete”
-) {
-    var remainingFields = seconds / unitSpeed[5];
-}else if (commandName.includes("noble") || commandName.includes("snob")) {
+                                        } else if (commandName.includes("ram") || commandName.includes("cat") || commandName.includes("aríete")) {
+                                                var remainingFields = seconds / unitSpeed[5];
+                                        } else if (commandName.includes("noble") || commandName.includes("snob")) || commandName.includes("nobre")) {
                                                 var remainingFields = seconds / unitSpeed[6];
                                         }
                                         //console.log(hatralevo_mezo);
@@ -226,21 +222,17 @@ javascript:
                                         //console.log(remaining);
                                         if (commandName.includes("sword")) {
                                                 var sec = remaining * unitSpeed[0];
-                                        } else if (commandName.includes("axe") || commandName.includes("spear")) {
+                                        } else if (commandName.includes("axe") || commandName.includes("spear")) || commandName.includes("machado") {
                                                 var sec = remaining * unitSpeed[1];
-                                        } else if (commandName.includes("spy") || commandName.includes("scout")) {
+                                        } else if (commandName.includes("spy") || commandName.includes("scout")) || commandName.includes("btd") {
                                                 var sec = remaining * unitSpeed[2];
                                         } else if (commandName.includes("lcav") || commandName.includes("light")) {
                                                 var sec = remaining * unitSpeed[3];
                                         } else if (commandName.includes("hcav") || commandName.includes("heavy")) {
                                                 var sec = remaining * unitSpeed[4];
-                                        } else if (
-    commandName.includes("ram") ||
-    commandName.includes("cat") ||
-    commandName.includes("aríete")    // idem aqui
-) {
-    var sec = remaining * unitSpeed[5];
-}else if (commandName.includes("noble") || commandName.includes("snob")) {
+                                        } else if (commandName.includes("ram") || commandName.includes("cat") || commandName.includes("aríete")) {
+                                                var sec = remaining * unitSpeed[5];
+                                        } else if (commandName.includes("noble") || commandName.includes("snob")) || commandName.includes("nobre")) {
                                                 var sec = remaining * unitSpeed[6];
                                         }
                                         // count down in seconds
