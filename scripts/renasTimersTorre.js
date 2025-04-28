@@ -222,9 +222,9 @@ javascript:
                                         //console.log(remaining);
                                         if (commandName.includes("sword")) {
                                                 var sec = remaining * unitSpeed[0];
-                                        } else if (commandName.includes("axe") || commandName.includes("spear")) || commandName.includes("machado") {
+                                        } else if (commandName.includes("axe") || commandName.includes("spear") || commandName.includes("machado") {
                                                 var sec = remaining * unitSpeed[1];
-                                        } else if (commandName.includes("spy") || commandName.includes("scout")) || commandName.includes("btd") {
+                                        } else if (commandName.includes("spy") || commandName.includes("scout") || commandName.includes("btd") {
                                                 var sec = remaining * unitSpeed[2];
                                         } else if (commandName.includes("lcav") || commandName.includes("light")) {
                                                 var sec = remaining * unitSpeed[3];
@@ -232,7 +232,7 @@ javascript:
                                                 var sec = remaining * unitSpeed[4];
                                         } else if (commandName.includes("ram") || commandName.includes("cat") || commandName.includes("aríete")) {
                                                 var sec = remaining * unitSpeed[5];
-                                        } else if (commandName.includes("noble") || commandName.includes("snob")) || commandName.includes("nobre")) {
+                                        } else if (commandName.includes("noble") || commandName.includes("snob") || commandName.includes("nobre")) {
                                                 var sec = remaining * unitSpeed[6];
                                         }
                                         // count down in seconds
