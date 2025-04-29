@@ -222,9 +222,9 @@ javascript:
                                         //console.log(remaining);
                                         if (commandName.includes("sword")) {
                                                 var sec = remaining * unitSpeed[0];
-                                        } else if (commandName.includes("axe") || commandName.includes("spear") || commandName.includes("machado") {
+                                        } else if (commandName.includes("axe") || commandName.includes("spear") || commandName.includes("machado")) {
                                                 var sec = remaining * unitSpeed[1];
-                                        } else if (commandName.includes("spy") || commandName.includes("scout") || commandName.includes("btd") {
+                                        } else if (commandName.includes("spy") || commandName.includes("scout") || commandName.includes("btd")) {
                                                 var sec = remaining * unitSpeed[2];
                                         } else if (commandName.includes("lcav") || commandName.includes("light")) {
                                                 var sec = remaining * unitSpeed[3];
