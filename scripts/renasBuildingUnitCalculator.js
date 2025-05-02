@@ -965,6 +965,15 @@ initCss(`
         transition: 0.5s;
         padding-top: 60px;
     }
+    .disabledOverlay {
+    	background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 0, 0.5),
+        rgba(255, 255, 0, 0.5) 5px,
+        rgba(0, 0, 0, 0.5) 5px,
+        rgba(0, 0, 0, 0.5) 10px
+    ) !important;
+}
 
     .sidenav a {
         padding: 8px 8px 8px 32px;
@@ -1123,17 +1132,23 @@ function enableBuilding(building) {
     }
 }
 
-// desativa uma unidade
 function disableUnit(unit) {
-    return document.getElementById(unit).disabled = true;
+    const el = document.getElementById(unit);
+    if (el) {
+        el.disabled = true;
+        const row = el.closest("tr");
+        if (row) row.classList.add("disabledOverlay");
+    }
 }
 
-// desativa um edifício
 function disableBuilding(building) {
-    if (building == "snob") {
-        building = "academy";
+    if (building == "snob") building = "academy";
+    const el = document.getElementById(building);
+    if (el) {
+        el.disabled = true;
+        const row = el.closest("tr");
+        if (row) row.classList.add("disabledOverlay");
     }
-    return document.getElementById(building).disabled = true;
 }
 
 // desativa todas as unidades exceto lança e espada (existem em todos os mundos e não requerem pré-requisitos)
