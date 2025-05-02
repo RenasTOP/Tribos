@@ -799,16 +799,36 @@ function getConfigInformation() {
 }
 
 async function configInformation() {
-	await createObject();
-	if (!getStorage("configTimeUpdate") || Date.now() > getStorage("configTimeUpdate") + 3600 * 1000) {
-		var xml = await getConfigInformation();
-		setTimeInStorage("configTimeUpdate");
-	}
-	data = parseData("configConfig");
-	config = Number($(data).find("config > speed").text());
-	Object.defineProperty(obj.world, "worldSpeed", { value: config });
-}
+    await createObject();
+    if (!getStorage("configTimeUpdate") || Date.now() > getStorage("configTimeUpdate") + 3600 * 1000) {
+        var xml = await getConfigInformation();
+        setTimeInStorage("configTimeUpdate");
+    }
 
+    data = parseData("configConfig");
+
+    // Velocidade do mundo
+    let speed = Number($(data).find("config > speed").text());
+    Object.defineProperty(obj.world, "worldSpeed", { value: speed });
+
+    // Verificar se o mundo tem arqueiros e igreja
+    let archerWorld = $(data).find("config > archer").text() === "1";
+    let churchWorld = $(data).find("config > church").text() === "1";
+
+    Object.defineProperty(obj.world, "hasArchers", { value: archerWorld });
+    Object.defineProperty(obj.world, "hasChurch", { value: churchWorld });
+
+    // Esconder elementos se o mundo não tiver essas opções
+    if (!archerWorld) {
+        $("#archer").closest("tr").hide();
+        $("#marcher").closest("tr").hide();
+    }
+
+    if (!churchWorld) {
+        $("#church").closest("tr").hide();
+        $("#church_f").closest("tr").hide();
+    }
+}
 // Recolher custos das unidades
 function getUnitsResources() {
 	return new Promise(function (resolve, reject) {
