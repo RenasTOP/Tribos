@@ -847,11 +847,11 @@ function initCss(css) {
 
 initCss(`
     #popup_box_calculator {
-        width: 2000px !important;
+        width: 1750px !important;
     }
     div#myTable {
         overflow-x: auto;
-        max-width: 100%;
+        max-width: 1750px;
         display: flex;
         white-space: nowrap;
     }
@@ -993,8 +993,8 @@ initCss(`
         position: absolute;
         top: 3px;
         cursor: pointer;
-	    width: 45px;
-	    height: 45px;
+        width: 45px;
+        height: 45px;
     }
     textarea {
         display: block;
