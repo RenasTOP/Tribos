@@ -323,7 +323,7 @@ content = `
     <td><img src=${imageSrc.spear}>Lanceiro</td>
     <td><input type="number" id="spear" class="unit" maxlength="5" min="0" max="32000"></td>
     <td><span><span class="icon header time"></span><span class="build_time">00:00:00:00</span></span></td>
-    <td class="sumbuildtime">00:00:00:00</td>
+    <td class="sumbuildtime" rowspan="4">00:00:00:00</td>
     <td class="haul">0</td>
     <td class="pop">0</td>
 </tr>
@@ -352,7 +352,7 @@ content = `
     <td><img src=${imageSrc.spy}>Batedor</td>
     <td><input type="number" id="spy" class="unit" maxlength="5" min="0" max="32000"></td>
     <td><span><span class="icon header time"></span><span class="build_time">00:00:00:00</span></span></td>
-    <td class="sumbuildtime">00:00:00:00</td>
+    <td class="sumbuildtime" rowspan="4">00:00:00:00</td>
     <td class="haul">0</td>
     <td class="pop">0</td>
 </tr>
@@ -381,7 +381,7 @@ content = `
     <td><img src=${imageSrc.ram}>Ariete</td>
     <td><input type="number" id="ram" class="unit" maxlength="5" min="0" max="32000"></td>
     <td><span><span class="icon header time"></span><span class="build_time">00:00:00:00</span></span></td>
-    <td class="sumbuildtime">00:00:00:00</td>
+    <td class="sumbuildtime" rowspan="2">00:00:00:00</td>
     <td class="haul">0</td>
     <td class="pop">0</td>
 </tr>
@@ -799,36 +799,16 @@ function getConfigInformation() {
 }
 
 async function configInformation() {
-    await createObject();
-    if (!getStorage("configTimeUpdate") || Date.now() > getStorage("configTimeUpdate") + 3600 * 1000) {
-        var xml = await getConfigInformation();
-        setTimeInStorage("configTimeUpdate");
-    }
-
-    data = parseData("configConfig");
-
-    // Velocidade do mundo
-    let speed = Number($(data).find("config > speed").text());
-    Object.defineProperty(obj.world, "worldSpeed", { value: speed });
-
-    // Verificar se o mundo tem arqueiros e igreja
-    let archerWorld = $(data).find("config > archer").text() === "1";
-    let churchWorld = $(data).find("config > church").text() === "1";
-
-    Object.defineProperty(obj.world, "hasArchers", { value: archerWorld });
-    Object.defineProperty(obj.world, "hasChurch", { value: churchWorld });
-
-    // Esconder elementos se o mundo não tiver essas opções
-    if (!archerWorld) {
-        $("#archer").closest("tr").hide();
-        $("#marcher").closest("tr").hide();
-    }
-
-    if (!churchWorld) {
-        $("#church").closest("tr").hide();
-        $("#church_f").closest("tr").hide();
-    }
+	await createObject();
+	if (!getStorage("configTimeUpdate") || Date.now() > getStorage("configTimeUpdate") + 3600 * 1000) {
+		var xml = await getConfigInformation();
+		setTimeInStorage("configTimeUpdate");
+	}
+	data = parseData("configConfig");
+	config = Number($(data).find("config > speed").text());
+	Object.defineProperty(obj.world, "worldSpeed", { value: config });
 }
+
 // Recolher custos das unidades
 function getUnitsResources() {
 	return new Promise(function (resolve, reject) {
@@ -867,12 +847,11 @@ function initCss(css) {
 
 initCss(`
     #popup_box_calculator {
-        width: 1900px !important;
-	max-width: 95vw;
+        width: 1500px !important;
     }
     div#myTable {
-        overflow-x: visible;
-        max-width: none;
+        overflow-x: auto;
+        max-width: 100%;
         display: flex;
         white-space: nowrap;
     }
@@ -1545,36 +1524,31 @@ function unitsPop() {
 // resume o tempo de recrutamento das unidades por edifício
 async function sumBuildTimeOfUnit() {
     var result = await buildTimeOfUnit();
-
-    const buildGroups = {
-        barracks: [0, 1, 2, 3], // spear, sword, axe, archer
-        stable: [4, 5, 6, 7],   // spy, light, marcher, heavy
-        garage: [8, 9]          // ram, catapult
-    };
-
-    for (let key in buildGroups) {
-        const indexes = buildGroups[key];
-        let totalSeconds = 0;
-
-        // Soma tempos
-        indexes.forEach(i => {
-            const time = $(".build_time").eq(i).text().split(":");
-            const seconds =
-                Number(time[0]) * 86400 +
-                Number(time[1]) * 3600 +
-                Number(time[2]) * 60 +
-                Number(time[3]);
-            totalSeconds += seconds;
-        });
-
-        // Escreve "—" nas outras, tempo total na última
-        indexes.forEach((i, idx) => {
-            if ($("#" + units[i]).closest("tr").is(":visible")) {
-                $(".sumbuildtime").eq(i).text(idx === indexes.length - 1 ? secondsToDhms(totalSeconds) : "—");
-            }
-        });
+    var seconds = 0;
+    var $seconds = 0;
+    var $$seconds = 0;
+    for (var i = 0; i < units.length; i++) {
+        if (i < 4) {
+            time = $(".build_time").eq(i).text().split(":");
+            seconds += Number(time[0]) * 86400 +  Number(time[1]) * 3600 +  Number(time[2]) * 60 +  Number(time[3]);
+            text = secondsToDhms(seconds);
+            $(".sumbuildtime").eq(0).text(text);
+        }
+        if (3 < i && i < 8) {
+            time = $(".build_time").eq(i).text().split(":");
+            $seconds += Number(time[0]) * 86400 +  Number(time[1]) * 3600 +  Number(time[2]) * 60 +  Number(time[3]);
+            text = secondsToDhms($seconds);
+            $(".sumbuildtime").eq(1).text(text);
+        }
+        if (7 < i && i < 10) {
+            time = $(".build_time").eq(i).text().split(":");
+            $$seconds += Number(time[0]) * 86400 +  Number(time[1]) * 3600 +  Number(time[2]) * 60 +  Number(time[3]);
+            text = secondsToDhms($$seconds);
+            $(".sumbuildtime").eq(2).text(text);
+        }
     }
 }
+
 // calcula a população ocupada
 async function lockedPop() {
     var lockedsum = 0;
