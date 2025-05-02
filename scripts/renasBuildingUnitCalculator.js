@@ -847,11 +847,12 @@ function initCss(css) {
 
 initCss(`
     #popup_box_calculator {
-        width: 1500px !important;
+        width: 1900px !important;
+	max-width: 95vw;
     }
     div#myTable {
-        overflow-x: auto;
-        max-width: 100%;
+        overflow-x: visible;
+        max-width: none;
         display: flex;
         white-space: nowrap;
     }
