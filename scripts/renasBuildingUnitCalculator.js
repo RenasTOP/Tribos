@@ -847,7 +847,7 @@ function initCss(css) {
 
 initCss(`
     #popup_box_calculator {
-        width: 1500px !important;
+        width: 2000px !important;
     }
     div#myTable {
         overflow-x: auto;
