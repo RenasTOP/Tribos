@@ -973,8 +973,7 @@ initCss(`
         rgba(0, 0, 0, 0.5) 5px,
         rgba(0, 0, 0, 0.5) 10px
     ) !important;
-}
-
+    }
     .sidenav a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
