@@ -966,10 +966,35 @@ initCss(`
         padding-top: 60px;
     }
     .disabledOverlay {
+    position: relative;
     background-color: rgba(80, 80, 80, 0.15) !important;
     opacity: 0.5;
-    pointer-events: none;
     filter: grayscale(100%) brightness(70%) contrast(90%);
+    pointer-events: none;
+}
+
+.disabledOverlay::before {
+    content: "🔒";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.disabledOverlay:hover::after {
+    content: "Não disponível neste mundo";
+    position: absolute;
+    top: -22px;
+    left: 25px;
+    background-color: #333;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: nowrap;
+    z-index: 999;
 }
     .sidenav a {
         padding: 8px 8px 8px 32px;
