@@ -1132,21 +1132,17 @@ function enableBuilding(building) {
 }
 
 function disableUnit(unit) {
-    const el = document.getElementById(unit);
-    if (el) {
-        el.disabled = true;
-        const row = el.closest("tr");
-        if (row) row.classList.add("disabledOverlay");
+    document.getElementById(unit).disabled = true;
+    if (obj.unitsObj[unit]?.exist === false) {
+        $("#" + unit).closest("tr").addClass("disabledOverlay");
     }
 }
 
 function disableBuilding(building) {
-    if (building == "snob") building = "academy";
-    const el = document.getElementById(building);
-    if (el) {
-        el.disabled = true;
-        const row = el.closest("tr");
-        if (row) row.classList.add("disabledOverlay");
+    if (building === "snob") building = "academy";
+    document.getElementById(building).disabled = true;
+    if (obj.buildingsObj[building]?.exist === false) {
+        $("#" + building).closest("tr").addClass("disabledOverlay");
     }
 }
 
