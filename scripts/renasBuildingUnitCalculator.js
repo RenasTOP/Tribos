@@ -966,13 +966,9 @@ initCss(`
         padding-top: 60px;
     }
     .disabledOverlay {
-    background: repeating-linear-gradient(
-        45deg,
-        rgba(150, 150, 150, 0.2),
-        rgba(150, 150, 150, 0.2) 10px,
-        rgba(180, 180, 180, 0.3) 10px,
-        rgba(180, 180, 180, 0.3) 20px
-    ) !important;
+    background-color: rgba(120, 120, 120, 0.1) !important;
+    opacity: 0.6;
+    pointer-events: none;
 }
     .sidenav a {
         padding: 8px 8px 8px 32px;
