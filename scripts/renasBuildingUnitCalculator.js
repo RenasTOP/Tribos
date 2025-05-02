@@ -966,14 +966,14 @@ initCss(`
         padding-top: 60px;
     }
     .disabledOverlay {
-    	background: repeating-linear-gradient(
+    background: repeating-linear-gradient(
         45deg,
-        rgba(255, 255, 0, 0.5),
-        rgba(255, 255, 0, 0.5) 5px,
-        rgba(0, 0, 0, 0.5) 5px,
-        rgba(0, 0, 0, 0.5) 10px
+        rgba(150, 150, 150, 0.2),
+        rgba(150, 150, 150, 0.2) 10px,
+        rgba(180, 180, 180, 0.3) 10px,
+        rgba(180, 180, 180, 0.3) 20px
     ) !important;
-    }
+}
     .sidenav a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
