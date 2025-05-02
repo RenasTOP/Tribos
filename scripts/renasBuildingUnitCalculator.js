@@ -965,15 +965,14 @@ initCss(`
         transition: 0.5s;
         padding-top: 60px;
     }
-    .disabledOverlay {
+    .tdDisabled {
     position: relative;
-    background-color: rgba(80, 80, 80, 0.15) !important;
     opacity: 0.5;
     filter: grayscale(100%) brightness(70%) contrast(90%);
     pointer-events: none;
 }
 
-.disabledOverlay::before {
+.tdDisabled::before {
     content: "🔒";
     position: absolute;
     left: 4px;
@@ -983,11 +982,11 @@ initCss(`
     opacity: 0.6;
 }
 
-.disabledOverlay:hover::after {
+.tdDisabled:hover::after {
     content: "Não disponível neste mundo";
     position: absolute;
     top: -22px;
-    left: 25px;
+    left: 22px;
     background-color: #333;
     color: #fff;
     padding: 2px 6px;
@@ -1156,7 +1155,7 @@ function enableBuilding(building) {
 function disableUnit(unit) {
     document.getElementById(unit).disabled = true;
     if (obj.unitsObj[unit]?.exist === false) {
-        $("#" + unit).closest("tr").addClass("disabledOverlay");
+        $("#" + unit).closest("tr").children("td:first").addClass("tdDisabled");
     }
 }
 
@@ -1164,7 +1163,7 @@ function disableBuilding(building) {
     if (building === "snob") building = "academy";
     document.getElementById(building).disabled = true;
     if (obj.buildingsObj[building]?.exist === false) {
-        $("#" + building).closest("tr").addClass("disabledOverlay");
+        $("#" + building).closest("tr").children("td:first").addClass("tdDisabled");
     }
 }
 
