@@ -966,10 +966,10 @@ initCss(`
         padding-top: 60px;
     }
     .disabledOverlay {
-    background-color: rgba(128, 128, 128, 0.15) !important;
-    opacity: 0.7;
+    background-color: rgba(80, 80, 80, 0.15) !important;
+    opacity: 0.5;
     pointer-events: none;
-    filter: grayscale(100%) brightness(85%);
+    filter: grayscale(100%) brightness(70%) contrast(90%);
 }
     .sidenav a {
         padding: 8px 8px 8px 32px;
