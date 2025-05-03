@@ -217,21 +217,59 @@ function buildUI(state) {
 function sendToDiscord(totalTroopsAtHome) {
     const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
     const troopsData = {
-        content: "Troops in Home:\n" +
-            `Spear: ${totalTroopsAtHome.spear}\n` +
-            `Sword: ${totalTroopsAtHome.sword}\n` +
-            `Axe: ${totalTroopsAtHome.axe}\n` +
-            `Archer: ${totalTroopsAtHome.archer}\n` +
-            `Spy: ${totalTroopsAtHome.spy}\n` +
-            `Light Cavalry: ${totalTroopsAtHome.light}\n` +
-            `Mounted Archers: ${totalTroopsAtHome.marcher}\n` +
-            `Heavy Cavalry: ${totalTroopsAtHome.heavy}\n` +
-            `Rams: ${totalTroopsAtHome.ram}\n` +
-            `Catapults: ${totalTroopsAtHome.catapult}\n` +
-            `Paladin: ${totalTroopsAtHome.knight}\n` +
-            `Noblemen: ${totalTroopsAtHome.snob}`
+        content: `
+**Own Home Troops Count (Atualizado em: ${getServerTime()})**
+
+**🏰 Current Group:** >todos<
+
+**⚔️ Offensive Troops:**
+- 🛡️ **Spear Fighters**: ${totalTroopsAtHome.spear}
+- ⚔️ **Swordsmen**: ${totalTroopsAtHome.sword}
+- 🪓 **Axemen**: ${totalTroopsAtHome.axe}
+- 🏹 **Archers**: ${totalTroopsAtHome.archer}
+- 🦸‍♂️ **Mounted Archers**: ${totalTroopsAtHome.marcher}
+- 🏇 **Heavy Cavalry**: ${totalTroopsAtHome.heavy}
+- 🪖 **Rams**: ${totalTroopsAtHome.ram}
+- 🏰 **Catapults**: ${totalTroopsAtHome.catapult}
+
+**🛡️ Defensive Troops:**
+- 🗡️ **Spear Fighters**: ${totalTroopsAtHome.spear}
+- ⚔️ **Swordsmen**: ${totalTroopsAtHome.sword}
+- 🏹 **Archers**: ${totalTroopsAtHome.archer}
+- <a:batedor:1366205884732276837> **Spies**: ${totalTroopsAtHome.spy}  <!-- Emoji customizado -->
+- 🛡️ **Heavy Cavalry**: ${totalTroopsAtHome.heavy}
+- 🎯 **Catapults**: ${totalTroopsAtHome.catapult}
+- 🛡️ **Paladins**: ${totalTroopsAtHome.knight}
+
+**📦 Packets:**
+- 🛡️ **Spear Packets**: ${totalTroopsAtHome.spear / 10} 
+- ⚔️ **Sword Packets**: ${totalTroopsAtHome.sword / 10} 
+- 🏹 **Archer Packets**: ${totalTroopsAtHome.archer / 10}
+- 🏇 **Heavy Cavalry Packets**: ${totalTroopsAtHome.heavy / 10}
+
+**📋 Export Troop Counts:**
+
+\`\`\`bbcode
+[unit]spear[/unit] [b]${totalTroopsAtHome.spear}[/b] Spear fighters
+[unit]sword[/unit] [b]${totalTroopsAtHome.sword}[/b] Swordsmen
+\`\`\`
+        `
     };
 
+    // Envia os dados para o Discord
+    $.ajax({
+        url: webhookURL,
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(troopsData),
+        success: function () {
+            alert("Troops information sent to Discord!");
+        },
+        error: function () {
+            alert("There was an error sending the data to Discord.");
+        }
+    });
+}
     // Envia os dados para o Discord
     $.ajax({
         url: webhookURL,
