@@ -224,7 +224,7 @@ function sendToDiscord(totalTroopsAtHome) {
 
 **⚔️ Offensive Troops:**
 - <:viking:1368332910167588875> **Axemen**: ${totalTroopsAtHome.axe}
-- <:leve:1368335366817316884> **Axemen**: ${totalTroopsAtHome.axe}
+- <:leve:1368335366817316884> **Axemen**: ${totalTroopsAtHome.light}
 - <:ariete:1366205883285241927> **Rams**: ${totalTroopsAtHome.ram}
 - <:catapulta:1368332903263633438> **Catapults**: ${totalTroopsAtHome.catapult}
 
