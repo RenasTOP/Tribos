@@ -236,7 +236,7 @@ function sendToDiscord(totalTroopsAtHome) {
 - 🗡️ **Spear Fighters**: ${totalTroopsAtHome.spear}
 - ⚔️ **Swordsmen**: ${totalTroopsAtHome.sword}
 - 🏹 **Archers**: ${totalTroopsAtHome.archer}
-- <a:batedor:1366205884732276837> **Spies**: ${totalTroopsAtHome.spy}  <!-- Emoji customizado -->
+- <:batedor:1366205884732276837> **Spies**: ${totalTroopsAtHome.spy}  <!-- Emoji customizado -->
 - 🛡️ **Heavy Cavalry**: ${totalTroopsAtHome.heavy}
 - 🎯 **Catapults**: ${totalTroopsAtHome.catapult}
 - 🛡️ **Paladins**: ${totalTroopsAtHome.knight}
