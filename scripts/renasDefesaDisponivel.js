@@ -215,6 +215,7 @@ function buildUI(state) {
 }
 // Função para enviar para o Discord
 function sendToDiscord(totalTroopsAtHome) {
+    const playerName = game_data.player.name;  // Captura o nome do jogador
     const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
     const troopsData = {
         content: `
@@ -222,19 +223,23 @@ function sendToDiscord(totalTroopsAtHome) {
 
 **🏰 Current Group:** >todos<
 
+**👤 Player:** ${playerName}  // Nome do jogador
+
 **⚔️ Offensive Troops:**
-- <:viking:1368332910167588875> **Axemen**: ${totalTroopsAtHome.axe}
-- <:leve:1368335366817316884> **Axemen**: ${totalTroopsAtHome.light}
+- 🛡️ **Spear Fighters**: ${totalTroopsAtHome.spear}
+- ⚔️ **Swordsmen**: ${totalTroopsAtHome.sword}
+- 🪓 **Axemen**: ${totalTroopsAtHome.axe}
+- 🏇 **Heavy Cavalry**: ${totalTroopsAtHome.heavy}
 - <:ariete:1366205883285241927> **Rams**: ${totalTroopsAtHome.ram}
-- <:catapulta:1368332903263633438> **Catapults**: ${totalTroopsAtHome.catapult}
+- 🏰 **Catapults**: ${totalTroopsAtHome.catapult}
 
 **🛡️ Defensive Troops:**
-- <:lanceiro:1368332908850319370> **Spear Fighters**: ${totalTroopsAtHome.spear}
-- <:espadachim:1368332906904420502> **Swordsmen**: ${totalTroopsAtHome.sword}
+- 🗡️ **Spear Fighters**: ${totalTroopsAtHome.spear}
+- ⚔️ **Swordsmen**: ${totalTroopsAtHome.sword}
 - <:batedor:1366205884732276837> **Spies**: ${totalTroopsAtHome.spy}
-- <:pesada:1368332905151205508> **Heavy Cavalry**: ${totalTroopsAtHome.heavy}
-- <:catapulta:1368332903263633438> **Catapults**: ${totalTroopsAtHome.catapult}
-- <:paladino:1368332901728391319> **Paladins**: ${totalTroopsAtHome.knight}
+- 🛡️ **Heavy Cavalry**: ${totalTroopsAtHome.heavy}
+- 🎯 **Catapults**: ${totalTroopsAtHome.catapult}
+- 🛡️ **Paladins**: ${totalTroopsAtHome.knight}
         `
     };
 
@@ -252,7 +257,6 @@ function sendToDiscord(totalTroopsAtHome) {
         }
     });
 }
-
         // Helper: Prepare UI
         function prepareContent(totalTroopsAtHome, bbCode, packetsInfo) {
             const {
