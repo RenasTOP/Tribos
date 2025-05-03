@@ -240,36 +240,9 @@ function sendToDiscord(totalTroopsAtHome) {
 - 🛡️ **Heavy Cavalry**: ${totalTroopsAtHome.heavy}
 - 🎯 **Catapults**: ${totalTroopsAtHome.catapult}
 - 🛡️ **Paladins**: ${totalTroopsAtHome.knight}
-
-**📦 Packets:**
-- 🛡️ **Spear Packets**: ${totalTroopsAtHome.spear / 10} 
-- ⚔️ **Sword Packets**: ${totalTroopsAtHome.sword / 10} 
-- 🏹 **Archer Packets**: ${totalTroopsAtHome.archer / 10}
-- 🏇 **Heavy Cavalry Packets**: ${totalTroopsAtHome.heavy / 10}
-
-**📋 Export Troop Counts:**
-
-\`\`\`bbcode
-[unit]spear[/unit] [b]${totalTroopsAtHome.spear}[/b] Spear fighters
-[unit]sword[/unit] [b]${totalTroopsAtHome.sword}[/b] Swordsmen
-\`\`\`
         `
     };
 
-    // Envia os dados para o Discord
-    $.ajax({
-        url: webhookURL,
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(troopsData),
-        success: function () {
-            alert("Troops information sent to Discord!");
-        },
-        error: function () {
-            alert("There was an error sending the data to Discord.");
-        }
-    });
-}
     // Envia os dados para o Discord
     $.ajax({
         url: webhookURL,
