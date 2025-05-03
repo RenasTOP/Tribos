@@ -221,23 +221,21 @@ function sendToDiscord(totalTroopsAtHome) {
         content: `
 **Own Home Troops Count (Atualizado em: ${getServerTime()})**
 
-**🏰 Current Group:** >todos<
-
-**👤 Player:** ${playerName}  // Nome do jogador
+**👤 Player:** ${playerName}
 
 **⚔️ Offensive Troops:**
-- <:viking:1368332910167588875> **Axemen**: ${totalTroopsAtHome.axe}
-- <:leve:1368335366817316884> **Light Cavalry**: ${totalTroopsAtHome.light}
-- <:ariete:1366205883285241927> **Rams**: ${totalTroopsAtHome.ram}
-- <:catapulta:1368332903263633438> **Catapults**: ${totalTroopsAtHome.catapult}
+- <:viking:1368332910167588875> **Vikings**: ${totalTroopsAtHome.axe}
+- <:leve:1368335366817316884> **Cavalaria Leve**: ${totalTroopsAtHome.light}
+- <:ariete:1366205883285241927> **Aríetes**: ${totalTroopsAtHome.ram}
+- <:catapulta:1368332903263633438> **Catapultas**: ${totalTroopsAtHome.catapult}
 
 **🛡️ Defensive Troops:**
-- <:lanceiro:1368332908850319370> **Spear Fighters**: ${totalTroopsAtHome.spear}
-- <:espadachim:1368332906904420502> **Swordsmen**: ${totalTroopsAtHome.sword}
-- <:batedor:1366205884732276837> **Spies**: ${totalTroopsAtHome.spy}
-- <:pesada:1368332905151205508> **Heavy Cavalry**: ${totalTroopsAtHome.heavy}
-- <:catapulta:1368332903263633438> **Catapults**: ${totalTroopsAtHome.catapult}
-- <:paladino:1368332901728391319> **Paladins**: ${totalTroopsAtHome.knight}
+- <:lanceiro:1368332908850319370> **Lanceiros**: ${totalTroopsAtHome.spear}
+- <:espadachim:1368332906904420502> **Espadachins**: ${totalTroopsAtHome.sword}
+- <:batedor:1366205884732276837> **Batedores**: ${totalTroopsAtHome.spy}
+- <:pesada:1368332905151205508> **Cavalaria Pesada**: ${totalTroopsAtHome.heavy}
+- <:catapulta:1368332903263633438> **Catapultas**: ${totalTroopsAtHome.catapult}
+- <:paladino:1368332901728391319> **Paladinso**: ${totalTroopsAtHome.knight}
         `
     };
 
