@@ -226,17 +226,14 @@ function sendToDiscord(totalTroopsAtHome) {
 - 🛡️ **Spear Fighters**: ${totalTroopsAtHome.spear}
 - ⚔️ **Swordsmen**: ${totalTroopsAtHome.sword}
 - 🪓 **Axemen**: ${totalTroopsAtHome.axe}
-- 🏹 **Archers**: ${totalTroopsAtHome.archer}
-- 🦸‍♂️ **Mounted Archers**: ${totalTroopsAtHome.marcher}
 - 🏇 **Heavy Cavalry**: ${totalTroopsAtHome.heavy}
-- 🪖 **Rams**: ${totalTroopsAtHome.ram}
+- <:ariete:1366205883285241927> **Rams**: ${totalTroopsAtHome.ram}
 - 🏰 **Catapults**: ${totalTroopsAtHome.catapult}
 
 **🛡️ Defensive Troops:**
 - 🗡️ **Spear Fighters**: ${totalTroopsAtHome.spear}
 - ⚔️ **Swordsmen**: ${totalTroopsAtHome.sword}
-- 🏹 **Archers**: ${totalTroopsAtHome.archer}
-- <:batedor:1366205884732276837> **Spies**: ${totalTroopsAtHome.spy}  <!-- Emoji customizado -->
+- <:batedor:1366205884732276837> **Spies**: ${totalTroopsAtHome.spy}
 - 🛡️ **Heavy Cavalry**: ${totalTroopsAtHome.heavy}
 - 🎯 **Catapults**: ${totalTroopsAtHome.catapult}
 - 🛡️ **Paladins**: ${totalTroopsAtHome.knight}
