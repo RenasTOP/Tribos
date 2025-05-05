@@ -521,6 +521,24 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
 
             return totalTroopsAtHome;
         }
+
+        // Helper: Get Troops BB Code
+        function getTroopsBBCode(totalTroopsAtHome) {
+            const currentGroup = jQuery('strong.group-menu-item').text();
+            let bbCode = `[b]${twSDK.tt(
+                'Own Home Troops Count'
+            )} (${getServerTime()})[/b]\n`;
+            bbCode += `[b]${twSDK.tt(
+                'Current Group:'
+            )}[/b] ${currentGroup}\n\n`;
+            for (let [key, value] of Object.entries(totalTroopsAtHome)) {
+                bbCode += `[unit]${key}[/unit] [b]${twSDK.formatAsNumber(
+                    value
+                )}[/b] ${getUnitLabel(key)}\n`;
+            }
+            return bbCode;
+        }
+
         // Helper: Get server time as a string
         function getServerTime() {
             const serverTime = jQuery('#serverTime').text();
@@ -551,6 +569,18 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
                 return '';
             }
         }
+
+        // Helper: Calculate Packet Amounts
+        function calculatePacketAmounts(troops, packetSizes) {
+            const { spear, sword, archer, heavy } = troops;
+            return {
+                spearPacket: parseInt(spear / packetSizes.spear),
+                swordPacket: parseInt(sword / packetSizes.sword),
+                archerPacket: parseInt(archer / packetSizes.archer),
+                heavyPacket: parseInt(heavy / packetSizes.heavy),
+            };
+        }
+
         // Helper: Build Packets info
         function buildPacketsInfo(packetAmounts) {
             const { spearPacket, swordPacket, archerPacket, heavyPacket } =
