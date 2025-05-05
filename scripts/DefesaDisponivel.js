@@ -144,89 +144,88 @@ $.getScript(
             });
         }
 
-        function prepareContent(totalTroopsAtHome, bbCode, packetsInfo) {
-            const {
-                spear,
-                sword,
-                axe,
-                archer,
-                spy,
-                light,
-                marcher,
-                heavy,
-                ram,
-                catapult,
-                knight,
-                snob,
-            } = totalTroopsAtHome;
+       // Helper: Preparar conteúdo
+function prepareContent(totalTroopsAtHome, bbCode, packetsInfo) {
+    const {
+        spear,
+        sword,
+        axe,
+        archer,
+        spy,
+        light,
+        marcher,
+        heavy,
+        ram,
+        catapult,
+        knight,
+        snob,
+    } = totalTroopsAtHome;
 
-            return `
-                <div class="ra-mb15">
-                    <h4>Tropas Ofensivas</h4>
-                    <table width="100%" class="ra-table">
-                        <thead>
-                            <tr>
-                                <th width="14.2%"><img src="/graphic/unit/unit_axe.webp"></th>
-                                <th width="14.2%"><img src="/graphic/unit/unit_light.webp"></th>
-                                <th width="14.2%" class="archer-world"><img src="/graphic/unit/unit_marcher.webp"></th>
-                                <th width="14.2%"><img src="/graphic/unit/unit_ram.webp"></th>
-                                <th width="14.2%"><img src="/graphic/unit/unit_catapult.webp"></th>
-                                <th width="14.2%" class="paladin-world"><img src="/graphic/unit/unit_knight.webp"></th>
-                                <th width="14.2%"><img src="/graphic/unit/unit_snob.webp"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td width="14.2%">${spear.toLocaleString()}</td>
-                                <td width="14.2%">${sword.toLocaleString()}</td>
-                                <td width="14.2%" class="archer-world">${archer.toLocaleString()}</td>
-                                <td width="14.2%">${ram.toLocaleString()}</td>
-                                <td width="14.2%">${catapult.toLocaleString()}</td>
-                                <td width="14.2%" class="paladin-world">${knight.toLocaleString()}</td>
-                                <td width="14.2%">${snob.toLocaleString()}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="ra-mb15">
-                    <h4>Tropas Defensivas</h4>
-                    <table width="100%" class="ra-table">
-                        <thead>
-                            <tr>
-                                <th width="14.2%"><img src="/graphic/unit/unit_spear.webp"></th>
-                                <th width="14.2%"><img src="/graphic/unit/unit_sword.webp"></th>
-                                <th width="14.2%" class="archer-world"><img src="/graphic/unit/unit_archer.webp"></th>
-                                <th width="14.2%"><img src="/graphic/unit/unit_spy.webp"></th>
-                                <th width="14.2%"><img src="/graphic/unit/unit_heavy.webp"></th>
-                                <th width="14.2%"><img src="/graphic/unit/unit_catapult.webp"></th>
-                                <th width="14.2%" class="paladin-world"><img src="/graphic/unit/unit_knight.webp"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td width="14.2%">${spear.toLocaleString()}</td>
-                                <td width="14.2%">${sword.toLocaleString()}</td>
-                                <td width="14.2%" class="archer-world">${archer.toLocaleString()}</td>
-                                <td width="14.2%">${spy.toLocaleString()}</td>
-                                <td width="14.2%">${heavy.toLocaleString()}</td>
-                                <td width="14.2%">${catapult.toLocaleString()}</td>
-                                <td width="14.2%" class="paladin-world">${knight.toLocaleString()}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="ra-mb15">
-                    <h4>Pacotes</h4>
-                    ${packetsInfo}
-                </div>
-                <div>
-                    <h4>Exportar Contagem de Tropas</h4>
-                    <textarea readonly class="ra-textarea">${bbCode.trim()}</textarea>
-                </div>
-            `;
-        }
-    }
-);
+    return `
+        <div class="ra-mb15">
+            <h4>Tropas Ofensivas</h4>
+            <table width="100%" class="ra-table">
+                <thead>
+                    <tr>
+                        <th width="14.2%"><img src="/graphic/unit/unit_axe.webp"></th>
+                        <th width="14.2%"><img src="/graphic/unit/unit_light.webp"></th>
+                        <th width="14.2%" class="archer-world"><img src="/graphic/unit/unit_marcher.webp"></th>
+                        <th width="14.2%"><img src="/graphic/unit/unit_ram.webp"></th>
+                        <th width="14.2%"><img src="/graphic/unit/unit_catapult.webp"></th>
+                        <th width="14.2%" class="paladin-world"><img src="/graphic/unit/unit_knight.webp"></th>
+                        <th width="14.2%"><img src="/graphic/unit/unit_snob.webp"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="14.2%">${(spear || 0).toLocaleString()}</td>
+                        <td width="14.2%">${(sword || 0).toLocaleString()}</td>
+                        <td width="14.2%" class="archer-world">${(archer || 0).toLocaleString()}</td>
+                        <td width="14.2%">${(ram || 0).toLocaleString()}</td>
+                        <td width="14.2%">${(catapult || 0).toLocaleString()}</td>
+                        <td width="14.2%" class="paladin-world">${(knight || 0).toLocaleString()}</td>
+                        <td width="14.2%">${(snob || 0).toLocaleString()}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="ra-mb15">
+            <h4>Tropas Defensivas</h4>
+            <table width="100%" class="ra-table">
+                <thead>
+                    <tr>
+                        <th width="14.2%"><img src="/graphic/unit/unit_spear.webp"></th>
+                        <th width="14.2%"><img src="/graphic/unit/unit_sword.webp"></th>
+                        <th width="14.2%" class="archer-world"><img src="/graphic/unit/unit_archer.webp"></th>
+                        <th width="14.2%"><img src="/graphic/unit/unit_spy.webp"></th>
+                        <th width="14.2%"><img src="/graphic/unit/unit_heavy.webp"></th>
+                        <th width="14.2%"><img src="/graphic/unit/unit_catapult.webp"></th>
+                        <th width="14.2%" class="paladin-world"><img src="/graphic/unit/unit_knight.webp"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="14.2%">${(spear || 0).toLocaleString()}</td>
+                        <td width="14.2%">${(sword || 0).toLocaleString()}</td>
+                        <td width="14.2%" class="archer-world">${(archer || 0).toLocaleString()}</td>
+                        <td width="14.2%">${(spy || 0).toLocaleString()}</td>
+                        <td width="14.2%">${(heavy || 0).toLocaleString()}</td>
+                        <td width="14.2%">${(catapult || 0).toLocaleString()}</td>
+                        <td width="14.2%" class="paladin-world">${(knight || 0).toLocaleString()}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="ra-mb15">
+            <h4>Pacotes</h4>
+            ${packetsInfo}
+        </div>
+        <div>
+            <h4>Exportar Contagem de Tropas</h4>
+            <textarea readonly class="ra-textarea">${bbCode.trim()}</textarea>
+        </div>
+    `;
+}
         // Helper: Coletar todas as tropas em casa
 function collectTroopsAtHome() {
     const combinedTableRows = jQuery('#combined_table tr.nowrap');
@@ -393,10 +392,10 @@ function buildPacketsInfo(packetAmounts) {
             </thead>
             <tbody>
                 <tr>
-                    <td>${spearPacket.toLocaleString()}</td>
-                    <td>${swordPacket.toLocaleString()}</td>
-                    <td class="archer-world">${archerPacket.toLocaleString()}</td>
-                    <td>${heavyPacket.toLocaleString()}</td>
+                    <td>${(spearPacket || 0).toLocaleString()}</td>
+                    <td>${(swordPacket || 0).toLocaleString()}</td>
+                    <td class="archer-world">${(archerPacket || 0).toLocaleString()}</td>
+                    <td>${(heavyPacket || 0).toLocaleString()}</td>
                 </tr>
             </tbody>
         </table>
