@@ -218,25 +218,29 @@ function sendToDiscord(totalTroopsAtHome) {
     const playerName = game_data.player.name;  // Captura o nome do jogador
     const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
     const troopsData = {
-        content: `
-**Own Home Troops Count (Atualizado em: ${getServerTime()})**
+        content: 
+`**Own Home Troops Count (Atualizado em: ${getServerTime()})**
 
-**👤 Player:** ${playerName}
+**Player:** ${playerName}
 
 **⚔️ Offensive Troops:**
-- <:viking:1368839522225487932> **Vikings**: ${totalTroopsAtHome.axe}
-- <:leve:1368839509977993256> **Cavalaria Leve**: ${totalTroopsAtHome.light}
-- <:ariete:1368839511261577216> **Aríetes**: ${totalTroopsAtHome.ram}
-- <:catapulta:1368839516441280573> **Catapultas**: ${totalTroopsAtHome.catapult}
+| Unit               | Quantity  |
+|--------------------|-----------|
+| <:viking:1368839522225487932> **Vikings**      | ${totalTroopsAtHome.axe} |
+| <:leve:1368839509977993256> **Cavalaria Leve** | ${totalTroopsAtHome.light} |
+| <:ariete:1368839511261577216> **Aríetes**      | ${totalTroopsAtHome.ram} |
+| <:catapulta:1368839516441280573> **Catapultas** | ${totalTroopsAtHome.catapult} |
 
 **🛡️ Defensive Troops:**
-- <:lanceiro:1368839513891409972> **Lanceiros**: ${totalTroopsAtHome.spear}
-- <:espadachim:1368839514746785844> **Espadachins**: ${totalTroopsAtHome.sword}
-- <:batedor:1368839512423137404> **Batedores**: ${totalTroopsAtHome.spy}
-- <:pesada:1368839517997498398> **Cavalaria Pesada**: ${totalTroopsAtHome.heavy}
-- <:catapulta:1368839516441280573> **Catapultas**: ${totalTroopsAtHome.catapult}
-- <:paladino:1368332901728391319> **Paladinos**: ${totalTroopsAtHome.knight}
-        `
+| Unit               | Quantity  |
+|--------------------|-----------|
+| <:lanceiro:1368839513891409972> **Lanceiros**   | ${totalTroopsAtHome.spear} |
+| <:espadachim:1368839514746785844> **Espadachins**| ${totalTroopsAtHome.sword} |
+| <:batedor:1368839512423137404> **Batedores**   | ${totalTroopsAtHome.spy} |
+| <:pesada:1368839517997498398> **Cavalaria Pesada** | ${totalTroopsAtHome.heavy} |
+| <:catapulta:1368839516441280573> **Catapultas** | ${totalTroopsAtHome.catapult} |
+| <:paladino:1368332901728391319> **Paladinos**   | ${totalTroopsAtHome.knight} |
+`
     };
 
     // Envia os dados para o Discord
