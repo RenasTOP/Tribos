@@ -218,8 +218,11 @@ function sendToDiscord(totalTroopsAtHome) {
     const playerName = game_data.player.name;  // Captura o nome do jogador
     const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
     
+    // Captura o nome do grupo diretamente na página
+    const currentGroup = jQuery('strong.group-menu-item').text().trim(); // Ajusta o seletor conforme necessário
+
     const embedData = {
-        content: `**Tropa em Casa (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}`,
+        content: `**Tropa em Casa (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}\n**Grupo Atual:** ${currentGroup}`,
         embeds: [
             {
                 title: "**⚔️ TROPA DE ATAQUE**",
