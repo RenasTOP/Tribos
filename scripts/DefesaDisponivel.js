@@ -34,9 +34,7 @@ var scriptConfig = {
 function buildUI(state) {
     const homeTroops = collectTroopsAtHome();
     const totalTroopsAtHome = getTotalHomeTroops(homeTroops);
-    const packetAmounts = calculatePacketAmounts(totalTroopsAtHome, state);
-    const packetsInfo = buildPacketsInfo(packetAmounts);
-    const content = prepareContent(totalTroopsAtHome, packetsInfo);
+    const content = prepareContent(totalTroopsAtHome);
 
     twSDK.renderBoxWidget(content, scriptConfig.scriptData.prefix, 'ra-own-home-troops-count');
 
