@@ -215,67 +215,67 @@ function buildUI(state) {
 }
 // Função para enviar para o Discord
 function sendToDiscord(totalTroopsAtHome) {
-    const playerName = game_data.player.name;  // Captura o nome do jogador
+    const playerName = game_data.player.name;
     const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
     
     const embedData = {
         content: `**Own Home Troops Count (Atualizado em: ${getServerTime()})**`,
         embeds: [
             {
-                title: "⚔️ Offensive Troops",
+                title: "**⚔️ TROPA DE ATAQUE**",
                 fields: [
                     {
-                        name: "<:viking:1368839522225487932> **Vikings**",
+                        name: "<:viking:1368839522225487932> **VIKINGS**",
                         value: `${totalTroopsAtHome.axe}`,
                         inline: true
                     },
                     {
-                        name: "<:leve:1368839509977993256> **Cavalaria Leve**",
+                        name: "<:leve:1368839509977993256> **CAVALARIA LEVE**",
                         value: `${totalTroopsAtHome.light}`,
                         inline: true
                     },
                     {
-                        name: "<:ariete:1368839511261577216> **Aríetes**",
+                        name: "<:ariete:1368839511261577216> **ARÍETES**",
                         value: `${totalTroopsAtHome.ram}`,
                         inline: true
                     },
                     {
-                        name: "<:catapulta:1368839516441280573> **Catapultas**",
+                        name: "<:catapulta:1368839516441280573> **CATAPULTAS**",
                         value: `${totalTroopsAtHome.catapult}`,
                         inline: true
                     }
                 ]
             },
             {
-                title: "🛡️ Defensive Troops",
+                title: "**🛡️ TROPA DEFENSIVA**",
                 fields: [
                     {
-                        name: "<:lanceiro:1368839513891409972> **Lanceiros**",
+                        name: "<:lanceiro:1368839513891409972> **LANCEIROS**",
                         value: `${totalTroopsAtHome.spear}`,
                         inline: true
                     },
                     {
-                        name: "<:espadachim:1368839514746785844> **Espadachins**",
+                        name: "<:espadachim:1368839514746785844> **ESPADACHINS**",
                         value: `${totalTroopsAtHome.sword}`,
                         inline: true
                     },
                     {
-                        name: "<:batedor:1368839512423137404> **Batedores**",
+                        name: "<:batedor:1368839512423137404> **BATEDORES**",
                         value: `${totalTroopsAtHome.spy}`,
                         inline: true
                     },
                     {
-                        name: "<:pesada:1368839517997498398> **Cavalaria Pesada**",
+                        name: "<:pesada:1368839517997498398> **CAVALARIA PESADA**",
                         value: `${totalTroopsAtHome.heavy}`,
                         inline: true
                     },
                     {
-                        name: "<:catapulta:1368839516441280573> **Catapultas**",
+                        name: "<:catapulta:1368839516441280573> **CATAPULTAS**",
                         value: `${totalTroopsAtHome.catapult}`,
                         inline: true
                     },
                     {
-                        name: "<:paladino:1368332901728391319> **Paladinos**",
+                        name: "<:paladino:1368332901728391319> **PALADINOS**",
                         value: `${totalTroopsAtHome.knight}`,
                         inline: true
                     }
