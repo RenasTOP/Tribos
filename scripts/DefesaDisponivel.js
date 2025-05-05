@@ -195,8 +195,8 @@ function buildUI(state) {
         'ra-own-home-troops-count'
     );
 
-    // Botão com texto mais relacionado ao Tribos
-    const discordButton = `<button id="sendToDiscord" class="button" style="background-color: #4CAF50; color: white; padding: 12px 24px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; font-family: 'Arial', sans-serif;">Enviar Defesa para o Discord</button>`;
+    // Botão ajustado para se alinhar com o tema Tribal Wars
+    const discordButton = `<button id="sendToDiscord" class="button" style="background-color: #3e2a47; color: white; padding: 12px 24px; border: 2px solid #b38b60; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Arial', sans-serif; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">Partilhar defesa com a liderança</button>`;
     jQuery('.ra-own-home-troops-count').append(discordButton);
 
     // Torna o botão mais visível na interface
@@ -205,24 +205,23 @@ function buildUI(state) {
         'margin': '20px auto',
         'text-align': 'center',
         'border-radius': '8px',
-        'box-shadow': '0px 4px 10px rgba(0, 0, 0, 0.2)',
         'transition': 'all 0.3s ease',
     });
 
     // Adiciona o efeito de hover para o botão
     jQuery('#sendToDiscord').hover(function () {
         jQuery(this).css({
-            'background-color': '#45a049',
+            'background-color': '#4f324e',
         });
     }, function () {
         jQuery(this).css({
-            'background-color': '#4CAF50',
+            'background-color': '#3e2a47',
         });
     });
 
-    // Evento de clique para enviar para o Discord
+    // Evento de clique para enviar apenas as tropas defensivas para o Discord
     jQuery('#sendToDiscord').click(function () {
-        sendToDiscord(totalTroopsAtHome); // Envia os dados para o Discord
+        sendDefensiveTroopsToDiscord(totalTroopsAtHome); // Envia as tropas defensivas para o Discord
     });
 
     setTimeout(() => {
@@ -234,42 +233,15 @@ function buildUI(state) {
             jQuery('.paladin-world').hide();
     }, 100);
 }
-// Função para enviar para o Discord
-function sendToDiscord(totalTroopsAtHome) {
+
+// Função para enviar apenas as tropas defensivas para o Discord
+function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
     const playerName = game_data.player.name;  // Captura o nome do jogador
     const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
     
-    // Captura o nome do grupo diretamente na página
-    const currentGroup = jQuery('strong.group-menu-item').text().trim(); // Ajusta o seletor conforme necessário
-
     const embedData = {
-        content: `**Tropa em Casa (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}\n**Grupo Atual:** ${currentGroup}`,
+        content: `**Tropa Defensiva (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}`,
         embeds: [
-            {
-                title: "**⚔️ TROPA DE ATAQUE**",
-                fields: [
-                    {
-                        name: "<:viking:1368839522225487932> **Vikings**",
-                        value: `${totalTroopsAtHome.axe}`,
-                        inline: true
-                    },
-                    {
-                        name: "<:leve:1368839509977993256> **Cavalaria Leve**",
-                        value: `${totalTroopsAtHome.light}`,
-                        inline: true
-                    },
-                    {
-                        name: "<:ariete:1368839511261577216> **Aríetes**",
-                        value: `${totalTroopsAtHome.ram}`,
-                        inline: true
-                    },
-                    {
-                        name: "<:catapulta:1368839516441280573> **Catapultas**",
-                        value: `${totalTroopsAtHome.catapult}`,
-                        inline: true
-                    }
-                ]
-            },
             {
                 title: "**🛡️ TROPA DEFENSIVA**",
                 fields: [
@@ -315,10 +287,10 @@ function sendToDiscord(totalTroopsAtHome) {
         contentType: 'application/json',
         data: JSON.stringify(embedData),
         success: function () {
-            alert("Troops information sent to Discord!");
+            alert("Defesa compartilhada com a liderança!");
         },
         error: function () {
-            alert("There was an error sending the data to Discord.");
+            alert("Houve um erro ao enviar os dados para o Discord.");
         }
     });
 }
