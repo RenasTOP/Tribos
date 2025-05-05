@@ -215,41 +215,41 @@ function buildUI(state) {
 }
 // Função para enviar para o Discord
 function sendToDiscord(totalTroopsAtHome) {
-    const playerName = game_data.player.name;  // Captura o nome do jogador
-    const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
-    const troopsData = {
-        content: `
-**Own Home Troops Count (Atualizado em: ${getServerTime()})**
+    const playerName = game_data.player.name;
+    const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT";
 
-**👤 Player:** ${playerName}
+    // Monta os campos do embed
+    const fields = [
+        { name: "🗡️ Lanceiros",         value: totalTroopsAtHome.spear.toString(),   inline: true },
+        { name: "⚔️ Espadachins",      value: totalTroopsAtHome.sword.toString(),   inline: true },
+        { name: "🏹 Batedores",         value: totalTroopsAtHome.spy.toString(),     inline: true },
+        { name: "🐎 Cavalaria Pesada",  value: totalTroopsAtHome.heavy.toString(),   inline: true },
+        { name: "🐏 Arietes",           value: totalTroopsAtHome.ram.toString(),     inline: true },
+        { name: "💣 Catapultas",        value: totalTroopsAtHome.catapult.toString(),inline: true },
+        // Se tiver outras unidades (e.g. archer, light, knight), adicione aqui:
+        ...(totalTroopsAtHome.archer != null ? [{ name: "🏹 Arqueiros", value: totalTroopsAtHome.archer.toString(), inline: true }] : []),
+        ...(totalTroopsAtHome.light  != null ? [{ name: "🐎 Cavalaria Leve", value: totalTroopsAtHome.light.toString(), inline: true }] : []),
+        ...(totalTroopsAtHome.knight != null ? [{ name: "🛡️ Paladinos", value: totalTroopsAtHome.knight.toString(), inline: true }] : []),
+    ];
 
-**⚔️ Offensive Troops:**
-- <:viking:1368839522225487932> **Vikings**: ${totalTroopsAtHome.axe}
-- <:leve:1368839509977993256> **Cavalaria Leve**: ${totalTroopsAtHome.light}
-- <:ariete:1368839511261577216> **Aríetes**: ${totalTroopsAtHome.ram}
-- <:catapulta:1368839516441280573> **Catapultas**: ${totalTroopsAtHome.catapult}
-
-**🛡️ Defensive Troops:**
-- <:lanceiro:1368839513891409972> **Lanceiros**: ${totalTroopsAtHome.spear}
-- <:espadachim:1368839514746785844> **Espadachins**: ${totalTroopsAtHome.sword}
-- <:batedor:1368839512423137404> **Batedores**: ${totalTroopsAtHome.spy}
-- <:pesada:1368839517997498398> **Cavalaria Pesada**: ${totalTroopsAtHome.heavy}
-- <:catapulta:1368839516441280573> **Catapultas**: ${totalTroopsAtHome.catapult}
-- <:paladino:1368332901728391319> **Paladinos**: ${totalTroopsAtHome.knight}
-        `
+    const embed = {
+        title: `Own Home Troops Count — ${getServerTime()}`,
+        description: `👤 **Player:** ${playerName}`,
+        fields: fields,
+        footer: { text: "Atualizado em" },
+        timestamp: new Date().toISOString()
     };
 
-    // Envia os dados para o Discord
     $.ajax({
         url: webhookURL,
         method: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify(troopsData),
+        data: JSON.stringify({ embeds: [embed] }),
         success: function () {
-            alert("Troops information sent to Discord!");
+            alert("Tabela enviada ao Discord!");
         },
         error: function () {
-            alert("There was an error sending the data to Discord.");
+            alert("Erro ao enviar ao Discord.");
         }
     });
 }
