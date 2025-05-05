@@ -215,14 +215,14 @@ function buildUI(state) {
 }
 // Função para enviar para o Discord
 function sendToDiscord(totalTroopsAtHome) {
-    const playerName = game_data.player.name;
+    const playerName = game_data.player.name;  // Captura o nome do jogador
     const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
     
     const embedData = {
-        content: `**Own Home Troops Count (Atualizado em: ${getServerTime()})**`,
+        content: `**Own Home Troops Count (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}`,
         embeds: [
             {
-                title: "**⚔️ TROPA DE ATAQUE**",
+                title: "**⚔️ OFFENSIVE TROOPS**",
                 fields: [
                     {
                         name: "<:viking:1368839522225487932> **VIKINGS**",
@@ -247,7 +247,7 @@ function sendToDiscord(totalTroopsAtHome) {
                 ]
             },
             {
-                title: "**🛡️ TROPA DEFENSIVA**",
+                title: "**🛡️ DEFENSIVE TROOPS**",
                 fields: [
                     {
                         name: "<:lanceiro:1368839513891409972> **LANCEIROS**",
