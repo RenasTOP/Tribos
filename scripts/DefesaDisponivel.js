@@ -134,7 +134,7 @@ var scriptConfig = {
 };
 
 $.getScript(
-    https://twscripts.dev/scripts/twSDK.js?url=${document.currentScript.src},
+    `https://twscripts.dev/scripts/twSDK.js?url=${document.currentScript.src}`,
     async function () {
         // Initialize Library
         await twSDK.init(scriptConfig);
@@ -169,7 +169,7 @@ $.getScript(
                 }
             } catch (error) {
                 UI.ErrorMessage(twSDK.tt('There was an error!'));
-                console.error(${scriptInfo} Error:, error);
+                console.error(`${scriptInfo} Error:`, error);
             }
         })();
 
@@ -196,7 +196,7 @@ function buildUI(state) {
     );
 
     // Adiciona o botão "Send to Discord"
-    const discordButton = <button id="sendToDiscord" class="button">Send to Discord</button>;
+    const discordButton = `<button id="sendToDiscord" class="button">Send to Discord</button>`;
     jQuery('.ra-own-home-troops-count').append(discordButton);
 
     // Adiciona evento de clique ao botão
@@ -218,29 +218,25 @@ function sendToDiscord(totalTroopsAtHome) {
     const playerName = game_data.player.name;  // Captura o nome do jogador
     const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
     const troopsData = {
-        content: 
-`**Own Home Troops Count (Atualizado em: ${getServerTime()})**
+        content: `
+**Own Home Troops Count (Atualizado em: ${getServerTime()})**
 
-**Player:** ${playerName}
+**👤 Player:** ${playerName}
 
 **⚔️ Offensive Troops:**
-| Unit               | Quantity  |
-|--------------------|-----------|
-| <:viking:1368839522225487932> **Vikings**      | ${totalTroopsAtHome.axe} |
-| <:leve:1368839509977993256> **Cavalaria Leve** | ${totalTroopsAtHome.light} |
-| <:ariete:1368839511261577216> **Aríetes**      | ${totalTroopsAtHome.ram} |
-| <:catapulta:1368839516441280573> **Catapultas** | ${totalTroopsAtHome.catapult} |
+- <:viking:1368839522225487932> **Vikings**: ${totalTroopsAtHome.axe}
+- <:leve:1368839509977993256> **Cavalaria Leve**: ${totalTroopsAtHome.light}
+- <:ariete:1368839511261577216> **Aríetes**: ${totalTroopsAtHome.ram}
+- <:catapulta:1368839516441280573> **Catapultas**: ${totalTroopsAtHome.catapult}
 
 **🛡️ Defensive Troops:**
-| Unit               | Quantity  |
-|--------------------|-----------|
-| <:lanceiro:1368839513891409972> **Lanceiros**   | ${totalTroopsAtHome.spear} |
-| <:espadachim:1368839514746785844> **Espadachins**| ${totalTroopsAtHome.sword} |
-| <:batedor:1368839512423137404> **Batedores**   | ${totalTroopsAtHome.spy} |
-| <:pesada:1368839517997498398> **Cavalaria Pesada** | ${totalTroopsAtHome.heavy} |
-| <:catapulta:1368839516441280573> **Catapultas** | ${totalTroopsAtHome.catapult} |
-| <:paladino:1368332901728391319> **Paladinos**   | ${totalTroopsAtHome.knight} |
-`
+- <:lanceiro:1368839513891409972> **Lanceiros**: ${totalTroopsAtHome.spear}
+- <:espadachim:1368839514746785844> **Espadachins**: ${totalTroopsAtHome.sword}
+- <:batedor:1368839512423137404> **Batedores**: ${totalTroopsAtHome.spy}
+- <:pesada:1368839517997498398> **Cavalaria Pesada**: ${totalTroopsAtHome.heavy}
+- <:catapulta:1368839516441280573> **Catapultas**: ${totalTroopsAtHome.catapult}
+- <:paladino:1368332901728391319> **Paladinos**: ${totalTroopsAtHome.knight}
+        `
     };
 
     // Envia os dados para o Discord
@@ -274,7 +270,7 @@ function sendToDiscord(totalTroopsAtHome) {
                 snob,
             } = totalTroopsAtHome;
 
-            return 
+            return `
                 <div class="ra-mb15">
                     <h4>${twSDK.tt('Offensive Troops')}</h4>
                     <table width="100%" class="ra-table">
@@ -393,7 +389,7 @@ function sendToDiscord(totalTroopsAtHome) {
                     <h4>${twSDK.tt('Export Troop Counts')}</h4>
                     <textarea readonly class="ra-textarea">${bbCode.trim()}</textarea>
                 </div>
-            ;
+            `;
         }
 
         // Helper: Collect all own troops at home
@@ -425,7 +421,7 @@ function sendToDiscord(totalTroopsAtHome) {
                             rowTroops = {
                                 ...rowTroops,
                                 [unitType]: parseInt(
-                                    jQuery(this).find(td:eq(${index})).text()
+                                    jQuery(this).find(`td:eq(${index})`).text()
                                 ),
                             };
                         }
@@ -488,16 +484,16 @@ function sendToDiscord(totalTroopsAtHome) {
         // Helper: Get Troops BB Code
         function getTroopsBBCode(totalTroopsAtHome) {
             const currentGroup = jQuery('strong.group-menu-item').text();
-            let bbCode = [b]${twSDK.tt(
+            let bbCode = `[b]${twSDK.tt(
                 'Own Home Troops Count'
-            )} (${getServerTime()})[/b]\n;
-            bbCode += [b]${twSDK.tt(
+            )} (${getServerTime()})[/b]\n`;
+            bbCode += `[b]${twSDK.tt(
                 'Current Group:'
-            )}[/b] ${currentGroup}\n\n;
+            )}[/b] ${currentGroup}\n\n`;
             for (let [key, value] of Object.entries(totalTroopsAtHome)) {
-                bbCode += [unit]${key}[/unit] [b]${twSDK.formatAsNumber(
+                bbCode += `[unit]${key}[/unit] [b]${twSDK.formatAsNumber(
                     value
-                )}[/b] ${getUnitLabel(key)}\n;
+                )}[/b] ${getUnitLabel(key)}\n`;
             }
             return bbCode;
         }
@@ -549,7 +545,7 @@ function sendToDiscord(totalTroopsAtHome) {
             const { spearPacket, swordPacket, archerPacket, heavyPacket } =
                 packetAmounts;
 
-            return 
+            return `
                 <table class="ra-table" width="100%">
                     <thead>
                         <tr>
@@ -578,7 +574,7 @@ function sendToDiscord(totalTroopsAtHome) {
                         </tr>
                     </tbody>
                 </table>
-            ;
+            `;
         }
     }
 );
