@@ -195,11 +195,32 @@ function buildUI(state) {
         'ra-own-home-troops-count'
     );
 
-    // Adiciona o botão "Send to Discord"
-    const discordButton = `<button id="sendToDiscord" class="button">Send to Discord</button>`;
+    // Botão com texto mais relacionado ao Tribos
+    const discordButton = `<button id="sendToDiscord" class="button" style="background-color: #4CAF50; color: white; padding: 12px 24px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; font-family: 'Arial', sans-serif;">Enviar Defesa para o Discord</button>`;
     jQuery('.ra-own-home-troops-count').append(discordButton);
 
-    // Adiciona evento de clique ao botão
+    // Torna o botão mais visível na interface
+    jQuery('#sendToDiscord').css({
+        'display': 'block',
+        'margin': '20px auto',
+        'text-align': 'center',
+        'border-radius': '8px',
+        'box-shadow': '0px 4px 10px rgba(0, 0, 0, 0.2)',
+        'transition': 'all 0.3s ease',
+    });
+
+    // Adiciona o efeito de hover para o botão
+    jQuery('#sendToDiscord').hover(function () {
+        jQuery(this).css({
+            'background-color': '#45a049',
+        });
+    }, function () {
+        jQuery(this).css({
+            'background-color': '#4CAF50',
+        });
+    });
+
+    // Evento de clique para enviar para o Discord
     jQuery('#sendToDiscord').click(function () {
         sendToDiscord(totalTroopsAtHome); // Envia os dados para o Discord
     });
