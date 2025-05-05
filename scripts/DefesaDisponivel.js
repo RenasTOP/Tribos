@@ -225,22 +225,22 @@ function sendToDiscord(totalTroopsAtHome) {
                 title: "**⚔️ TROPA DE ATAQUE**",
                 fields: [
                     {
-                        name: "<:viking:1368839522225487932> **VIKINGS**",
+                        name: "<:viking:1368839522225487932> **Vikings**",
                         value: `${totalTroopsAtHome.axe}`,
                         inline: true
                     },
                     {
-                        name: "<:leve:1368839509977993256> **CAVALARIA LEVE**",
+                        name: "<:leve:1368839509977993256> **Cavalaria Leve**",
                         value: `${totalTroopsAtHome.light}`,
                         inline: true
                     },
                     {
-                        name: "<:ariete:1368839511261577216> **ARÍETES**",
+                        name: "<:ariete:1368839511261577216> **Aríetes**",
                         value: `${totalTroopsAtHome.ram}`,
                         inline: true
                     },
                     {
-                        name: "<:catapulta:1368839516441280573> **CATAPULTAS**",
+                        name: "<:catapulta:1368839516441280573> **Catapultas**",
                         value: `${totalTroopsAtHome.catapult}`,
                         inline: true
                     }
@@ -250,32 +250,32 @@ function sendToDiscord(totalTroopsAtHome) {
                 title: "**🛡️ TROPA DEFENSIVA**",
                 fields: [
                     {
-                        name: "<:lanceiro:1368839513891409972> **LANCEIROS**",
+                        name: "<:lanceiro:1368839513891409972> **Lanceiros**",
                         value: `${totalTroopsAtHome.spear}`,
                         inline: true
                     },
                     {
-                        name: "<:espadachim:1368839514746785844> **ESPADACHINS**",
+                        name: "<:espadachim:1368839514746785844> **Espadachins**",
                         value: `${totalTroopsAtHome.sword}`,
                         inline: true
                     },
                     {
-                        name: "<:batedor:1368839512423137404> **BATEDORES**",
+                        name: "<:batedor:1368839512423137404> **Batedores**",
                         value: `${totalTroopsAtHome.spy}`,
                         inline: true
                     },
                     {
-                        name: "<:pesada:1368839517997498398> **CAVALARIA PESADA**",
+                        name: "<:pesada:1368839517997498398> **Cavalaria Pesada**",
                         value: `${totalTroopsAtHome.heavy}`,
                         inline: true
                     },
                     {
-                        name: "<:catapulta:1368839516441280573> **CATAPULTAS**",
+                        name: "<:catapulta:1368839516441280573> **Catapultas**",
                         value: `${totalTroopsAtHome.catapult}`,
                         inline: true
                     },
                     {
-                        name: "<:paladino:1368332901728391319> **PALADINOS**",
+                        name: "<:paladino:1368332901728391319> **Paladinos**",
                         value: `${totalTroopsAtHome.knight}`,
                         inline: true
                     }
