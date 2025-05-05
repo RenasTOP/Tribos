@@ -219,7 +219,7 @@ function sendToDiscord(totalTroopsAtHome) {
     const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
     
     const embedData = {
-        content: `**Own Home Troops Count (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}`,
+        content: `**Tropa em Casa (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}`,
         embeds: [
             {
                 title: "**⚔️ TROPA DE ATAQUE**",
