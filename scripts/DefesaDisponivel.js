@@ -222,7 +222,7 @@ function sendToDiscord(totalTroopsAtHome) {
         content: `**Own Home Troops Count (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}`,
         embeds: [
             {
-                title: "**⚔️ OFFENSIVE TROOPS**",
+                title: "**⚔️ TROPA DE ATAQUE**",
                 fields: [
                     {
                         name: "<:viking:1368839522225487932> **VIKINGS**",
@@ -247,7 +247,7 @@ function sendToDiscord(totalTroopsAtHome) {
                 ]
             },
             {
-                title: "**🛡️ DEFENSIVE TROOPS**",
+                title: "**🛡️ TROPA DEFENSIVA**",
                 fields: [
                     {
                         name: "<:lanceiro:1368839513891409972> **LANCEIROS**",
