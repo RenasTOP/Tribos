@@ -217,30 +217,71 @@ function buildUI(state) {
 function sendToDiscord(totalTroopsAtHome) {
     const playerName = game_data.player.name;  // Captura o nome do jogador
     const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
-    const troopsData = {
-        content: 
-`**Own Home Troops Count (Atualizado em: ${getServerTime()})**
-
-**Player:** ${playerName}
-
-**⚔️ Offensive Troops:**
-| Unit               | Quantity  |
-|--------------------|-----------|
-| <:viking:1368839522225487932> **Vikings**      | ${totalTroopsAtHome.axe} |
-| <:leve:1368839509977993256> **Cavalaria Leve** | ${totalTroopsAtHome.light} |
-| <:ariete:1368839511261577216> **Aríetes**      | ${totalTroopsAtHome.ram} |
-| <:catapulta:1368839516441280573> **Catapultas** | ${totalTroopsAtHome.catapult} |
-
-**🛡️ Defensive Troops:**
-| Unit               | Quantity  |
-|--------------------|-----------|
-| <:lanceiro:1368839513891409972> **Lanceiros**   | ${totalTroopsAtHome.spear} |
-| <:espadachim:1368839514746785844> **Espadachins**| ${totalTroopsAtHome.sword} |
-| <:batedor:1368839512423137404> **Batedores**   | ${totalTroopsAtHome.spy} |
-| <:pesada:1368839517997498398> **Cavalaria Pesada** | ${totalTroopsAtHome.heavy} |
-| <:catapulta:1368839516441280573> **Catapultas** | ${totalTroopsAtHome.catapult} |
-| <:paladino:1368332901728391319> **Paladinos**   | ${totalTroopsAtHome.knight} |
-`
+    
+    const embedData = {
+        content: `**Own Home Troops Count (Atualizado em: ${getServerTime()})**`,
+        embeds: [
+            {
+                title: "⚔️ Offensive Troops",
+                fields: [
+                    {
+                        name: "<:viking:1368839522225487932> **Vikings**",
+                        value: `${totalTroopsAtHome.axe}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:leve:1368839509977993256> **Cavalaria Leve**",
+                        value: `${totalTroopsAtHome.light}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:ariete:1368839511261577216> **Aríetes**",
+                        value: `${totalTroopsAtHome.ram}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:catapulta:1368839516441280573> **Catapultas**",
+                        value: `${totalTroopsAtHome.catapult}`,
+                        inline: true
+                    }
+                ]
+            },
+            {
+                title: "🛡️ Defensive Troops",
+                fields: [
+                    {
+                        name: "<:lanceiro:1368839513891409972> **Lanceiros**",
+                        value: `${totalTroopsAtHome.spear}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:espadachim:1368839514746785844> **Espadachins**",
+                        value: `${totalTroopsAtHome.sword}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:batedor:1368839512423137404> **Batedores**",
+                        value: `${totalTroopsAtHome.spy}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:pesada:1368839517997498398> **Cavalaria Pesada**",
+                        value: `${totalTroopsAtHome.heavy}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:catapulta:1368839516441280573> **Catapultas**",
+                        value: `${totalTroopsAtHome.catapult}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:paladino:1368332901728391319> **Paladinos**",
+                        value: `${totalTroopsAtHome.knight}`,
+                        inline: true
+                    }
+                ]
+            }
+        ]
     };
 
     // Envia os dados para o Discord
@@ -248,7 +289,7 @@ function sendToDiscord(totalTroopsAtHome) {
         url: webhookURL,
         method: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify(troopsData),
+        data: JSON.stringify(embedData),
         success: function () {
             alert("Troops information sent to Discord!");
         },
