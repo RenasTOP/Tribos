@@ -223,6 +223,7 @@ function buildUI() {
 // Função para enviar apenas as tropas defensivas para o Discord
 function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
     const playerName = game_data.player.name;  // Captura o nome do jogador
+    const currentGroup = jQuery('strong.group-menu-item').text(); // <— captura do grupo atual
     const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
     
     const embedData = {
@@ -231,6 +232,11 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
             {
                 title: "**🛡️ TROPA DEFENSIVA**",
                 fields: [
+                    {
+                        name: "🗂️ **Grupo Atual**",  // <— novo campo
+                        value: currentGroup,
+                        inline: false
+                    },
                     {
                         name: "<:lanceiro:1368839513891409972> **Lanceiros**",
                         value: `${totalTroopsAtHome.spear}`,
