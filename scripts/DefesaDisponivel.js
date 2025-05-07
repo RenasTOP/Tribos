@@ -137,6 +137,17 @@ $.getScript(
     `https://twscripts.dev/scripts/twSDK.js?url=${document.currentScript.src}`,
     async function () {
         // Initialize Library
+        // ——— CONFIGURAÇÃO DE WEBHOOKS ———
+        // Mapeia game_data.player.name → URL do Incoming Webhook do canal Discord
+        const webhookMap = {
+          'Renas':       'https://discord.com/api/webhooks/1369789428687437864/mgzZHBaglV2aL8EDCn6VASjml9zlGzI1FsJN6Tqeg6pP4PvG7OL0gQ4gXPyUY0c-4odh',
+          'RapMonsters': 'https://discord.com/api/webhooks/1369789438107979966/Owsj9tvKKxjWfAgocLVBBygcwZIFQrUTr3fWQSaaf62kwSmjqM5KA8lyxW9KIJTWFOxt',
+          // … adicione aqui todos os ~60 jogadores …
+        };
+        // Se quiser um webhook genérico caso o nome não bata
+        const defaultWebhook = null;
+
+        // Initialize Library
         await twSDK.init(scriptConfig);
         const scriptInfo = twSDK.scriptInfo();
         const isValidScreen = twSDK.checkValidLocation('screen');
@@ -220,71 +231,45 @@ function buildUI() {
     }, 100);
 }
 
-// Função para enviar apenas as tropas defensivas para o Discord
+// Função para enviar apenas as tropas defensivas para o Discord via Webhook
 function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
-    const playerName = game_data.player.name;  // Captura o nome do jogador
-    const currentGroup = jQuery('strong.group-menu-item').text(); // <— captura do grupo atual
-    const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
-    
-    const embedData = {
-        content: `**Tropa Defensiva (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}`,
-        embeds: [
-            {
-                title: "**🛡️ TROPA DEFENSIVA**",
-                fields: [
-                    {
-                        name: "🗂️ **Grupo Atual**",  // <— novo campo
-                        value: currentGroup,
-                        inline: false
-                    },
-                    {
-                        name: "<:lanceiro:1368839513891409972> **Lanceiros**",
-                        value: `${totalTroopsAtHome.spear}`,
-                        inline: true
-                    },
-                    {
-                        name: "<:espadachim:1368839514746785844> **Espadachins**",
-                        value: `${totalTroopsAtHome.sword}`,
-                        inline: true
-                    },
-                    {
-                        name: "<:batedor:1368839512423137404> **Batedores**",
-                        value: `${totalTroopsAtHome.spy}`,
-                        inline: true
-                    },
-                    {
-                        name: "<:pesada:1368839517997498398> **Cavalaria Pesada**",
-                        value: `${totalTroopsAtHome.heavy}`,
-                        inline: true
-                    },
-                    {
-                        name: "<:catapulta:1368839516441280573> **Catapultas**",
-                        value: `${totalTroopsAtHome.catapult}`,
-                        inline: true
-                    },
-                    {
-                        name: "<:paladino:1368332901728391319> **Paladinos**",
-                        value: `${totalTroopsAtHome.knight}`,
-                        inline: true
-                    }
-                ]
-            }
-        ]
-    };
+  const playerName   = game_data.player.name;
+  const currentGroup = jQuery('strong.group-menu-item').text();
 
-    // Envia os dados para o Discord
-    $.ajax({
-        url: webhookURL,
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(embedData),
-        success: function () {
-            alert("Defesa compartilhada com a liderança!");
-        },
-        error: function () {
-            alert("Houve um erro ao enviar os dados para o Discord.");
-        }
-    });
+  // busca o webhook certo ou usa o default
+  const webhookURL = webhookMap[playerName] || defaultWebhook;
+  if (!webhookURL) {
+    return alert(`⚠️ Não há webhook configurado para ${playerName}`);
+  }
+
+  const embedData = {
+  content: `**Tropa Defensiva (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}`,
+  embeds: [{
+    title: "🛡️ Tropa Defensiva",
+    fields: [
+      { name: "🗂️ Grupo Atual",                    value: currentGroup,                  inline: false },
+      { name: "<:lanceiro:1368839513891409972> Lanceiros",        value: `${totalTroopsAtHome.spear}`,  inline: true },
+      { name: "<:espadachim:1368839514746785844> Espadachins",     value: `${totalTroopsAtHome.sword}`,  inline: true },
+      { name: "<:batedor:1368839512423137404> Batedores",         value: `${totalTroopsAtHome.spy}`,    inline: true },
+      { name: "<:pesada:1368839517997498398> Cavalaria Pesada",    value: `${totalTroopsAtHome.heavy}`,  inline: true },
+      { name: "<:catapulta:1368839516441280573> Catapultas",      value: `${totalTroopsAtHome.catapult}`,inline: true },
+      { name: "<:paladino:1368332901728391319> Paladinos",        value: `${totalTroopsAtHome.knight}`, inline: true },
+    ]
+  }]
+};
+
+  $.ajax({
+    url: webhookURL,
+    method: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify(embedData),
+    success() {
+      alert("✅ Defesa compartilhada com a liderança!");
+    },
+    error(err) {
+      alert(`❌ Erro ao enviar: ${err.statusText || err.responseText}`);
+    }
+  });
 }
         // Helper: Prepare UI
         function prepareContent(totalTroopsAtHome, bbCode) {
