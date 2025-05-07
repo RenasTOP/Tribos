@@ -134,17 +134,8 @@ var scriptConfig = {
 };
 
 $.getScript(
-    https://twscripts.dev/scripts/twSDK.js?url=${document.currentScript.src},
+    `https://twscripts.dev/scripts/twSDK.js?url=${document.currentScript.src}`,
     async function () {
-        // Initialize Library
-        // ——— CONFIGURAÇÃO DO BOT ———
-        const botToken = 'MTM2OTc4NDIzMzUwMTEzNTA2MQ.GyHGTS.-Goj_Lk00g2ZxSNqprm75gOwXJjfGLkatyxvJY';      // <— cola aqui o token do teu bot
-        const channelMap = {                        // <— mapeia jogador → ID do canal
-        'Renas':       '1344289376192041103',
-        'RapMonsters': '1349158937613701170',
-        // … adicione aqui todos os jogadores …
-        };
-
         // Initialize Library
         await twSDK.init(scriptConfig);
         const scriptInfo = twSDK.scriptInfo();
@@ -170,7 +161,7 @@ $.getScript(
                 }
             } catch (error) {
                 UI.ErrorMessage(twSDK.tt('There was an error!'));
-                console.error(${scriptInfo} Error:, error);
+                console.error(`${scriptInfo} Error:`, error);
             }
         })();
 
@@ -191,7 +182,7 @@ function buildUI() {
     );
 
     // Botão ajustado para se alinhar com o tema Tribal Wars
-    const discordButton = <button id="sendToDiscord" class="button" style="background-color: #3e2a47; color: white; padding: 12px 24px; border: 2px solid #b38b60; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Arial', sans-serif; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">Partilhar defesa com a liderança</button>;
+    const discordButton = `<button id="sendToDiscord" class="button" style="background-color: #3e2a47; color: white; padding: 12px 24px; border: 2px solid #b38b60; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Arial', sans-serif; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">Partilhar defesa com a liderança</button>`;
     jQuery('.ra-own-home-troops-count').append(discordButton);
 
     // Torna o botão mais visível na interface
@@ -229,53 +220,71 @@ function buildUI() {
     }, 100);
 }
 
-// Função para enviar apenas as tropas defensivas para o Discord via Bot
-async function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
-    const playerName   = game_data.player.name;
-    const currentGroup = jQuery('strong.group-menu-item').text();
-
-    const channelId = channelMap[playerName];
-    if (!channelId) {
-        return alert(⚠️ Canal não configurado para ${playerName});
-    }
-
-    const url = https://discord.com/api/channels/${channelId}/messages;
-    const payload = {
-        content: **Tropa Defensiva (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName},
+// Função para enviar apenas as tropas defensivas para o Discord
+function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
+    const playerName = game_data.player.name;  // Captura o nome do jogador
+    const currentGroup = jQuery('strong.group-menu-item').text(); // <— captura do grupo atual
+    const webhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT"; // Substitua com o seu URL de webhook do Discord
+    
+    const embedData = {
+        content: `**Tropa Defensiva (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}`,
         embeds: [
             {
-                title: "🛡️ Tropa Defensiva",
+                title: "**🛡️ TROPA DEFENSIVA**",
                 fields: [
-                    { name: "🗂️ Grupo Atual", value: currentGroup, inline: false },
-                    { name: "Lanceiros",      value: ${totalTroopsAtHome.spear},  inline: true },
-                    { name: "Espadachins",    value: ${totalTroopsAtHome.sword},  inline: true },
-                    { name: "Batedores",      value: ${totalTroopsAtHome.spy},    inline: true },
-                    { name: "Cavalaria Pesada", value: ${totalTroopsAtHome.heavy}, inline: true },
-                    { name: "Catapultas",     value: ${totalTroopsAtHome.catapult}, inline: true },
-                    { name: "Paladinos",      value: ${totalTroopsAtHome.knight}, inline: true }
+                    {
+                        name: "🗂️ **Grupo Atual**",  // <— novo campo
+                        value: currentGroup,
+                        inline: false
+                    },
+                    {
+                        name: "<:lanceiro:1368839513891409972> **Lanceiros**",
+                        value: `${totalTroopsAtHome.spear}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:espadachim:1368839514746785844> **Espadachins**",
+                        value: `${totalTroopsAtHome.sword}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:batedor:1368839512423137404> **Batedores**",
+                        value: `${totalTroopsAtHome.spy}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:pesada:1368839517997498398> **Cavalaria Pesada**",
+                        value: `${totalTroopsAtHome.heavy}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:catapulta:1368839516441280573> **Catapultas**",
+                        value: `${totalTroopsAtHome.catapult}`,
+                        inline: true
+                    },
+                    {
+                        name: "<:paladino:1368332901728391319> **Paladinos**",
+                        value: `${totalTroopsAtHome.knight}`,
+                        inline: true
+                    }
                 ]
             }
         ]
     };
 
-    try {
-        const res = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Authorization': Bot ${botToken},
-                'Content-Type':  'application/json'
-            },
-            body: JSON.stringify(payload)
-        });
-        if (res.ok) {
-            alert("✅ Defesa compartilhada com a liderança!");
-        } else {
-            const err = await res.text();
-            alert(❌ Erro ao enviar: ${res.status} ${err});
+    // Envia os dados para o Discord
+    $.ajax({
+        url: webhookURL,
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(embedData),
+        success: function () {
+            alert("Defesa compartilhada com a liderança!");
+        },
+        error: function () {
+            alert("Houve um erro ao enviar os dados para o Discord.");
         }
-    } catch (e) {
-        alert("❌ Não foi possível contactar o Discord: " + e);
-    }
+    });
 }
         // Helper: Prepare UI
         function prepareContent(totalTroopsAtHome, bbCode) {
@@ -294,7 +303,7 @@ async function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
                 snob,
             } = totalTroopsAtHome;
 
-            return 
+            return `
                 <div class="ra-mb15">
                     <h4>${twSDK.tt('Offensive Troops')}</h4>
                     <table width="100%" class="ra-table">
@@ -409,7 +418,7 @@ async function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
                     <h4>${twSDK.tt('Export Troop Counts')}</h4>
                     <textarea readonly class="ra-textarea">${bbCode.trim()}</textarea>
                 </div>
-            ;
+            `;
         }
 
         // Helper: Collect all own troops at home
@@ -441,7 +450,7 @@ async function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
                             rowTroops = {
                                 ...rowTroops,
                                 [unitType]: parseInt(
-                                    jQuery(this).find(td:eq(${index})).text()
+                                    jQuery(this).find(`td:eq(${index})`).text()
                                 ),
                             };
                         }
@@ -504,16 +513,16 @@ async function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         // Helper: Get Troops BB Code
         function getTroopsBBCode(totalTroopsAtHome) {
             const currentGroup = jQuery('strong.group-menu-item').text();
-            let bbCode = [b]${twSDK.tt(
+            let bbCode = `[b]${twSDK.tt(
                 'Own Home Troops Count'
-            )} (${getServerTime()})[/b]\n;
-            bbCode += [b]${twSDK.tt(
+            )} (${getServerTime()})[/b]\n`;
+            bbCode += `[b]${twSDK.tt(
                 'Current Group:'
-            )}[/b] ${currentGroup}\n\n;
+            )}[/b] ${currentGroup}\n\n`;
             for (let [key, value] of Object.entries(totalTroopsAtHome)) {
-                bbCode += [unit]${key}[/unit] [b]${twSDK.formatAsNumber(
+                bbCode += `[unit]${key}[/unit] [b]${twSDK.formatAsNumber(
                     value
-                )}[/b] ${getUnitLabel(key)}\n;
+                )}[/b] ${getUnitLabel(key)}\n`;
             }
             return bbCode;
         }
