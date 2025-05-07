@@ -142,20 +142,12 @@ $.getScript(
         const isValidScreen = twSDK.checkValidLocation('screen');
         const isValidMode = twSDK.checkValidLocation('mode');
 
-        // Data Store Config
-        var DEFAULT_STATE = {
-            spear: 500,
-            sword: 500,
-            archer: 500,
-            heavy: 250,
-        };
-
         // Script business logic
         (function () {
             try {
                 if (game_data.features.Premium.active) {
                     if (isValidScreen && isValidMode) {
-                        buildUI(DEFAULT_STATE);
+                        buildUI();
                     } else {
                         UI.InfoMessage(twSDK.tt('Redirecting...'));
                         twSDK.redirectTo('overview_villages&mode=combined');
@@ -174,19 +166,13 @@ $.getScript(
         })();
 
  // Render: Build the user interface
-function buildUI(state) {
+function buildUI() {
     const homeTroops = collectTroopsAtHome();
     const totalTroopsAtHome = getTotalHomeTroops(homeTroops);
-    const packetAmounts = calculatePacketAmounts(
-        totalTroopsAtHome,
-        state
-    );
-    const packetsInfo = buildPacketsInfo(packetAmounts);
     const bbCode = getTroopsBBCode(totalTroopsAtHome);
     const content = prepareContent(
         totalTroopsAtHome,
-        bbCode,
-        packetsInfo
+        bbCode
     );
 
     twSDK.renderBoxWidget(
@@ -295,7 +281,7 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
     });
 }
         // Helper: Prepare UI
-        function prepareContent(totalTroopsAtHome, bbCode, packetsInfo) {
+        function prepareContent(totalTroopsAtHome, bbCode) {
             const {
                 spear,
                 sword,
@@ -421,10 +407,6 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                <div class="ra-mb15">
-                    <h4>${twSDK.tt('Packets')}</h4>
-                    ${packetsInfo}
                 </div>
                 <div>
                     <h4>${twSDK.tt('Export Troop Counts')}</h4>
@@ -568,54 +550,6 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
             } else {
                 return '';
             }
-        }
-
-        // Helper: Calculate Packet Amounts
-        function calculatePacketAmounts(troops, packetSizes) {
-            const { spear, sword, archer, heavy } = troops;
-            return {
-                spearPacket: parseInt(spear / packetSizes.spear),
-                swordPacket: parseInt(sword / packetSizes.sword),
-                archerPacket: parseInt(archer / packetSizes.archer),
-                heavyPacket: parseInt(heavy / packetSizes.heavy),
-            };
-        }
-
-        // Helper: Build Packets info
-        function buildPacketsInfo(packetAmounts) {
-            const { spearPacket, swordPacket, archerPacket, heavyPacket } =
-                packetAmounts;
-
-            return `
-                <table class="ra-table" width="100%">
-                    <thead>
-                        <tr>
-                            <th width="14.2%">
-                                <img src="/graphic/unit/unit_spear.webp">
-                            </th>
-                            <th width="14.2%">
-                                <img src="/graphic/unit/unit_sword.webp">
-                            </th>
-                            <th width="14.2%" class="archer-world">
-                                <img src="/graphic/unit/unit_archer.webp">
-                            </th>
-                            <th width="14.2%">
-                                <img src="/graphic/unit/unit_heavy.webp">
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>${twSDK.formatAsNumber(spearPacket)}</td>
-                            <td>${twSDK.formatAsNumber(swordPacket)}</td>
-                            <td class="archer-world">${twSDK.formatAsNumber(
-                                archerPacket
-                            )}</td>
-                            <td>${twSDK.formatAsNumber(heavyPacket)}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            `;
         }
     }
 );
