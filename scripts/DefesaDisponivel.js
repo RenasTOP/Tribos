@@ -275,7 +275,7 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
 
             return `
                 <div class="ra-mb15">
-                    <h4>Tropas Ofensivas</h4>
+                    <h4>Tropa de Ataque</h4>
                     <table width="100%" class="ra-table">
                         <thead>
                             <tr>
