@@ -246,16 +246,12 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         ]
     };
 
-// Função para enviar apenas as tropas defensivas para o Discord
-function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
-  // ...preparas playerName, currentGroup, webhooks e embedData...
-
   // 4) Envia para o webhook correto usando fetch + no-cors
-  fetch(webhookURL, {
+ fetch(webhookURL, {
     method: 'POST',
-    mode: 'no-cors',            // evita bloqueio CORS no Firefox
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(embedData)
+    mode:   'no-cors',            // evita bloqueio CORS no Firefox
+    headers:{ 'Content-Type':'application/json' },
+    body:   JSON.stringify(embedData)
   })
   .then(() => {
     alert("✅ Defesa compartilhada com a liderança!");
@@ -263,10 +259,8 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
   .catch(err => {
     console.error("Erro ao enviar para o Discord:", err);
     alert("❌ Não foi possível partilhar a defesa.");
-  });  // <-- Fecha o catch e o fetch blocos
-
-  // NÃO COLOQUES mais parênteses ou chaves aqui!
-}
+  });
+}  // <-- fecha SEND_DEFENSIVE_TROOPS
         // Helper: Prepare UI
         function prepareContent(totalTroopsAtHome, bbCode) {
             const {
