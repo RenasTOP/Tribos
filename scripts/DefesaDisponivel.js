@@ -76,6 +76,7 @@ $('<style>').prop('type','text/css').html(`
   }
 .ra-own-home-troops-count {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 12px;
   border-radius: 8px;
 }
 .ra-own-home-troops-count h4 {
