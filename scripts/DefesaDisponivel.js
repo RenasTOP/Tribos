@@ -74,17 +74,6 @@ $('<style>').prop('type','text/css').html(`
     vertical-align: middle;
     margin-right: 8px;
   }
-.ra-own-home-troops-count {
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  background: #fff;
-  padding: 12px;
-  border-radius: 8px;
-}
-
-.ra-own-home-troops-count h4 {
-  font-size: 1.1em;
-  letter-spacing: 0.5px;
-}
 
 `).appendTo('head');
         const scriptInfo = twSDK.scriptInfo();
