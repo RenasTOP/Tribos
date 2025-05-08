@@ -6,7 +6,7 @@ var scriptConfig = {
   scriptData: {
     prefix: 'ownHomeTroopsCount',
     name:   'Own Home Troops Count',
-    version:'v2 (TWF)',
+    version:'v2 (versão TWF)',
     author: 'RedAlert',
     authorUrl: 'https://twscripts.dev/',
     helpLink:  'https://forum.tribalwars.net/index.php?threads/own-home-troops-count.286618/'
