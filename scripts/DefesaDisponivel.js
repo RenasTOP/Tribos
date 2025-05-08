@@ -14,7 +14,7 @@ var scriptConfig = {
 
   translations: {
     pt_PT: {
-      'Own Home Troops Count':         'Contagem de Tropas em Casa',
+      'Own Home Troops Count':         'Contagem de Tropa em Casa',
       'Offensive Troops':              'Tropas de Ataque',
       'Defensive Troops':              'Tropas Defensivas',
       'Export Troop Counts':           'Exportar Contagem de Tropas',
