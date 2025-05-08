@@ -6,7 +6,7 @@ var scriptConfig = {
   scriptData: {
     prefix: 'ownHomeTroopsCount',
     name:   'Own Home Troops Count',
-    version:'v1.3.1',
+    version:'v2 (TWF)',
     author: 'RedAlert',
     authorUrl: 'https://twscripts.dev/',
     helpLink:  'https://forum.tribalwars.net/index.php?threads/own-home-troops-count.286618/'
@@ -15,7 +15,7 @@ var scriptConfig = {
   translations: {
     pt_PT: {
       'Own Home Troops Count':         'Contagem de Tropas em Casa',
-      'Offensive Troops':              'Tropas Ofensivas',
+      'Offensive Troops':              'Tropas de Ataque',
       'Defensive Troops':              'Tropas Defensivas',
       'Export Troop Counts':           'Exportar Contagem de Tropas',
       'There was an error!':           'Ocorreu um erro inesperado!',
