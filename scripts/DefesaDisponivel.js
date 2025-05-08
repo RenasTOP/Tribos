@@ -267,7 +267,7 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         "JONSIE": "https://discord.com/api/webhooks/1369795226851344475/uyOWSGtAl8E4pykxEmmDxP3ppG4bXxJiADrFUZu5fIMImE1V8G_mYMlrHw3jULDmcDvy",
         "KaiZen": "https://discord.com/api/webhooks/1369815208054489088/iWJZN5A0x_HNzS7lesfy0dEg7fqPGo6phSWvES0xCbwsSFmAgwitewXfukDZIUDhPyjv",
         "Kapinha do Povo": "https://discord.com/api/webhooks/1369795228902621284/R1nW0rHNFhIT4PyNfn-Hsf6YKCdDZuHezT01jzgaap0ulvC_XntUALfIuV0Pq9UyPL_b",
-        "krawk": "https://discord.com/api/webhooks/1369795222833332344/EtYHu7WMjD6xw9iKbyPdh2NXCB2R9hDzioU6KgWE3s57ZcaUhIKyVNHmeA8QdT9NjEyS",^
+        "krawk": "https://discord.com/api/webhooks/1369795222833332344/EtYHu7WMjD6xw9iKbyPdh2NXCB2R9hDzioU6KgWE3s57ZcaUhIKyVNHmeA8QdT9NjEyS",
         "Mac-bride77": "https://discord.com/api/webhooks/1369815204149596190/Gpra5Z4OxeNHpsMy9dlioDXAzb8ubbgT5G4OJVrE4ETiZQUm5_cGHY0pyYNoZF49py_4",
         "ManoBreak": "https://discord.com/api/webhooks/1369815211653206047/7zsypaY18_3Y_Tna3MyfpyiwcDtTcVbmHG8gRrmsd4OGzsyf-bbpYxSk7R6ktlPUE24G",
         "mario5pt": "https://discord.com/api/webhooks/1369815215369228330/blWqJ06v3Z5rs4aoykfJH8egIa3UKYSrtfssi9-i5PjV54NMnO4KENSNVwAgVoolNPJJ",
