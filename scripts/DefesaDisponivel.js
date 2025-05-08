@@ -5,16 +5,25 @@ if (typeof DEBUG !== 'boolean') DEBUG = false;
 var scriptConfig = {
   scriptData: {
     prefix: 'ownHomeTroopsCount',
-    name:   'Contagem de Tropas em Casa',
+    name:   'Own Home Troops Count',      // deixa isto em Inglês
     version:'v1.3.1',
     author: 'RedAlert',
     authorUrl: 'https://twscripts.dev/',
     helpLink:  'https://forum.tribalwars.net/index.php?threads/own-home-troops-count.286618/'
   },
 
-  // --- basta isto: ---
   translations: {
-    pt_PT: { }
+    pt_PT: {
+      'Own Home Troops Count':         'Contagem de Tropas em Casa',
+      'Offensive Troops':              'Tropas Ofensivas',
+      'Defensive Troops':              'Tropas Defensivas',
+      'Export Troop Counts':           'Exportar Contagem de Tropas',
+      'There was an error!':           'Ocorreu um erro inesperado!',
+      'Premium Account is required for this script to run!':
+                                         'É necessário ter conta Premium para usar este script!',
+      'Redirecting...':                'Redirecionando...',
+      Help:                            'Ajuda'
+    }
   },
 
   allowedMarkets:   [],
