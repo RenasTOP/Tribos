@@ -5,7 +5,7 @@ if (typeof DEBUG !== 'boolean') DEBUG = false;
 var scriptConfig = {
   scriptData: {
     prefix: 'ownHomeTroopsCount',
-    name:   'Own Home Troops Count',      // deixa isto em Inglês
+    name:   'Own Home Troops Count',
     version:'v1.3.1',
     author: 'RedAlert',
     authorUrl: 'https://twscripts.dev/',
@@ -77,11 +77,9 @@ function buildUI() {
         'ra-own-home-troops-count'
     );
 
-    // Botão ajustado para se alinhar com o tema Tribal Wars
-    const discordButton = `<button id="sendToDiscord" class="button" style="background-color: #3e2a47; color: white; padding: 12px 24px; border: 2px solid #b38b60; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Arial', sans-serif; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">Partilhar defesa com a liderança</button>`;
+    const discordButton = `<button id="sendToDiscord" class="button" style="background-color: #3e2a47; color: white; padding: 12px 24px; border: 2px solid #b38b60; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Arial', sans-serif; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">Enviar Defesa disponivel para o ticket</button>`;
     jQuery('.ra-own-home-troops-count').append(discordButton);
 
-    // Torna o botão mais visível na interface
     jQuery('#sendToDiscord').css({
         'display': 'block',
         'margin': '20px auto',
@@ -90,7 +88,6 @@ function buildUI() {
         'transition': 'all 0.3s ease',
     });
 
-    // Adiciona o efeito de hover para o botão
     jQuery('#sendToDiscord').hover(function () {
         jQuery(this).css({
             'background-color': '#4f324e',
@@ -101,9 +98,8 @@ function buildUI() {
         });
     });
 
-    // Evento de clique para enviar apenas as tropas defensivas para o Discord
     jQuery('#sendToDiscord').click(function () {
-        sendDefensiveTroopsToDiscord(totalTroopsAtHome); // Envia as tropas defensivas para o Discord
+        sendDefensiveTroopsToDiscord(totalTroopsAtHome);
     });
 
     setTimeout(() => {
@@ -121,7 +117,6 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
     const playerName = game_data.player.name;  
     const currentGroup = jQuery('strong.group-menu-item').text();
 
-    // 1) Mapeamento jogador → webhook URL
     const webhooks = {
         "Renas":       "https://discord.com/api/webhooks/1369789428687437864/mgzZHBaglV2aL8EDCn6VASjml9zlGzI1FsJN6Tqeg6pP4PvG7OL0gQ4gXPyUY0c-4odh",
         "RapMonsters": "https://discord.com/api/webhooks/1369789438107979966/Owsj9tvKKxjWfAgocLVBBygcwZIFQrUTr3fWQSaaf62kwSmjqM5KA8lyxW9KIJTWFOxt",
@@ -199,20 +194,16 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         "treis": "https://discord.com/api/webhooks/1369795702082769046/guzeEjgYTCMe3pNKD7WQGYK5lAdbn_BCJOg1ToIbsgXhkLI9SdPiphKBp6oAyLx9iN9D",
         "Tzu.75": "https://discord.com/api/webhooks/1369817928790446110/pqTyE0ijIkp7-CoLGqY4BVpDhWxedPABKWTDiXSsGftT9hjZEwKYdtlVEhwAZWVNUJmV",
         "zxcvbnmqwertyuiop": "https://discord.com/api/webhooks/1369815737941627051/SuCRLxj6wiSay8xeMw5FpgNaKRS0XI-V47tzeIh2i1RFrF2B2vW-73pA1IIVJi7aR6ut",
-        // adicione aqui todos os jogadores da tribo
     };
 
-    // 2) Webhook padrão caso o jogador não esteja no mapeamento
     const defaultWebhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT";
 
-    // 3) Seleciona a URL certa (ou a padrão)
     let webhookURL = webhooks[playerName];
     if (!webhookURL) {
         alert(`❌ Player "${playerName}" não encontrado no nosso sistema, por favor alerta a liderança no Discord da TWF.`);
         webhookURL = defaultWebhookURL;
     }
 
-    // 3) Monta o objeto embed (igual ao antes)
     const embedData = {
         content: `**Tropa Defensiva (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}`,
         embeds: [
@@ -490,7 +481,6 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         }
 
         // Helper: Get unit label by unit key (PT-PT)
-         // Helper: Get unit label by unit key (PT-PT)
         function getUnitLabel(key) {
             const unitLabel = {
                 spear:    'Lanceiros',
@@ -506,7 +496,6 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
                 knight:   'Paladinos',
                 snob:     'Nobres'
             };
-            // devolve o rótulo correcto ou, se não existir, string vazia
             return unitLabel[key] || '';
         }
     }
