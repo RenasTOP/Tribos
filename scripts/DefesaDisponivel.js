@@ -228,6 +228,7 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         "treis": "https://discord.com/api/webhooks/1369795702082769046/guzeEjgYTCMe3pNKD7WQGYK5lAdbn_BCJOg1ToIbsgXhkLI9SdPiphKBp6oAyLx9iN9D",
         "Tzu.75": "https://discord.com/api/webhooks/1369817928790446110/pqTyE0ijIkp7-CoLGqY4BVpDhWxedPABKWTDiXSsGftT9hjZEwKYdtlVEhwAZWVNUJmV",
         "zxcvbnmqwertyuiop": "https://discord.com/api/webhooks/1369815737941627051/SuCRLxj6wiSay8xeMw5FpgNaKRS0XI-V47tzeIh2i1RFrF2B2vW-73pA1IIVJi7aR6ut",
+        "Tr0mb4s": "https://discord.com/api/webhooks/1370009552304734348/Zod3ZBLJDJ67vqp-jM3J5khomTD2Ityx7oYRinR5mF1MxDaLdtnS0gyKFhIzCiVk0hDq",
     };
 
     const defaultWebhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT";
