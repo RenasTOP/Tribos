@@ -105,7 +105,7 @@ function buildUI() {
       alt="TWF"
       style="width:20px;height:20px;vertical-align:middle;margin-right:8px;"
     />
-    Enviar Defesa
+    Partilhar defesa disponivel no ticket
   </button>
 `;
 jQuery('.ra-own-home-troops-count').append(discordButton);
