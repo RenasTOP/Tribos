@@ -38,27 +38,34 @@ $.getScript(
     async function () {
         // Initialize Library
         await twSDK.init(scriptConfig);
-$('<style>')
-  .prop('type','text/css')
-  .html(`
-    #sendToDiscord.btn-twf {
-      display: block;
-      margin: 20px auto;
-      padding: 8px 16px;
-      background: linear-gradient(to bottom, #f2e5b6 0%, #d6c58a 100%);
-      border: 1px solid #b59e4c;
-      border-radius: 6px;
-      color: #383020;
-      font-weight: bold;
-      font-size: 14px;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.6);
-      cursor: pointer;
-    }
-    #sendToDiscord.btn-twf:hover {
-      background: linear-gradient(to bottom, #e7d49f 0%, #c9b16f 100%);
-    }
-  `)
-  .appendTo('head');
+$('<style>').prop('type','text/css').html(`
+  /* botão */
+  #sendToDiscord.btn-twf {
+    display: block;
+    margin: 20px auto;
+    padding: 8px 16px;
+    background: linear-gradient(to bottom, #f2e5b6 0%, #d6c58a 100%);
+    border: 1px solid #b59e4c;
+    border-radius: 6px;
+    color: #383020;
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+    cursor: pointer;
+  }
+  #sendToDiscord.btn-twf:hover {
+    background: linear-gradient(to bottom, #e7d49f 0%, #c9b16f 100%);
+  }
+  /* ícone dentro do botão: até 20×20 mas mantendo proporção */
+  #sendToDiscord.btn-twf img {
+    max-width: 20px;
+    max-height: 20px;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+`).appendTo('head');
         const scriptInfo = twSDK.scriptInfo();
         const isValidScreen = twSDK.checkValidLocation('screen');
         const isValidMode = twSDK.checkValidLocation('mode');
@@ -100,12 +107,8 @@ function buildUI() {
 
     const discordButton = `
   <button id="sendToDiscord" class="btn-twf">
-    <img
-      src="https://i.imgur.com/8n7jRL9.png"
-      alt="TWF"
-      style="width:20px;height:20px;vertical-align:middle;margin-right:8px;"
-    />
-    Partilhar defesa disponivel no ticket
+    <img src="https://i.imgur.com/8n7jRL9.png" alt="TWF">
+    Partilhar defesa disponível no ticket
   </button>
 `;
 jQuery('.ra-own-home-troops-count').append(discordButton);
