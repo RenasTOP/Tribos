@@ -259,7 +259,7 @@ fetch(webhookURL, {
 .catch(err => {
   console.error("Erro ao enviar para o Discord:", err);
   alert("❌ Não foi possível partilhar a defesa.");
-}
+});  // <— aqui fecha o fetch
         // Helper: Prepare UI
         function prepareContent(totalTroopsAtHome, bbCode) {
             const {
