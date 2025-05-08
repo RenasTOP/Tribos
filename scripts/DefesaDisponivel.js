@@ -38,6 +38,24 @@ $.getScript(
     async function () {
         // Initialize Library
         await twSDK.init(scriptConfig);
+twSDK.addStyle(`
+  #sendToDiscord.btn-twf {
+    display: block;
+    margin: 20px auto;
+    padding: 8px 16px;
+    background: linear-gradient(to bottom, #f2e5b6 0%, #d6c58a 100%);
+    border: 1px solid #b59e4c;
+    border-radius: 6px;
+    color: #383020;
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+    cursor: pointer;
+  }
+  #sendToDiscord.btn-twf:hover {
+    background: linear-gradient(to bottom, #e7d49f 0%, #c9b16f 100%);
+  }
+`);
         const scriptInfo = twSDK.scriptInfo();
         const isValidScreen = twSDK.checkValidLocation('screen');
         const isValidMode = twSDK.checkValidLocation('mode');
@@ -77,30 +95,20 @@ function buildUI() {
         'ra-own-home-troops-count'
     );
 
-    const discordButton = `<button id="sendToDiscord" class="button" style="background-color: #3e2a47; color: white; padding: 12px 24px; border: 2px solid #b38b60; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Arial', sans-serif; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">Enviar Defesa disponivel para o ticket</button>`;
-    jQuery('.ra-own-home-troops-count').append(discordButton);
-
-    jQuery('#sendToDiscord').css({
-        'display': 'block',
-        'margin': '20px auto',
-        'text-align': 'center',
-        'border-radius': '8px',
-        'transition': 'all 0.3s ease',
-    });
-
-    jQuery('#sendToDiscord').hover(function () {
-        jQuery(this).css({
-            'background-color': '#4f324e',
-        });
-    }, function () {
-        jQuery(this).css({
-            'background-color': '#3e2a47',
-        });
-    });
-
-    jQuery('#sendToDiscord').click(function () {
-        sendDefensiveTroopsToDiscord(totalTroopsAtHome);
-    });
+    const discordButton = `
+  <button id="sendToDiscord" class="btn-twf">
+    <img
+      src="https://i.imgur.com/8n7jRL9.png"
+      alt="TWF"
+      style="width:20px;height:20px;vertical-align:middle;margin-right:8px;"
+    />
+    Enviar Defesa
+  </button>
+`;
+jQuery('.ra-own-home-troops-count').append(discordButton);
+jQuery('#sendToDiscord').on('click', () => {
+  sendDefensiveTroopsToDiscord(totalTroopsAtHome);
+});
 
     setTimeout(() => {
         // handle non-archer worlds
