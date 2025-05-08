@@ -475,24 +475,24 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         }
 
         // Helper: Get unit label by unit key (PT-PT)
+         // Helper: Get unit label by unit key (PT-PT)
         function getUnitLabel(key) {
             const unitLabel = {
-            spear:    'Lanceiros',
-            sword:    'Espadachins',
-            axe:      'Vikings',
-            archer:   'Arqueiros',
-            spy:      'Batedores',
-            light:    'Cavalaria Leve',
-            marcher:  'Arqueiros Montados',
-            heavy:    'Cavalaria Pesada',
-            ram:      'Aríetes',
-            catapult: 'Catapultas',
-            knight:   'Paladinos',
-            snob:     'Nobres'
+                spear:    'Lanceiros',
+                sword:    'Espadachins',
+                axe:      'Vikings',
+                archer:   'Arqueiros',
+                spy:      'Batedores',
+                light:    'Cavalaria Leve',
+                marcher:  'Arqueiros Montados',
+                heavy:    'Cavalaria Pesada',
+                ram:      'Aríetes',
+                catapult: 'Catapultas',
+                knight:   'Paladinos',
+                snob:     'Nobres'
             };
             // devolve o rótulo correcto ou, se não existir, string vazia
             return unitLabel[key] || '';
-            }
         }
     }
 );
