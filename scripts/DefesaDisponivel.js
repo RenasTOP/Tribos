@@ -263,7 +263,7 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         "inhuman": "https://discord.com/api/webhooks/1369795225488461927/G8vuhVnZkQv0aOFbiUw57PnFxYebh-RhUPevhwzpTCHB5quExERJPc8jhULhcyKgaHI2",
         "IronFlux": "https://discord.com/api/webhooks/1369828250741768302/u9wzPkmAp2fDKw8j3bzqsbYqzl7a56aGPtnnL61LU_g8T154j-tjtbTB5-EwNk8FDWCF",
         "janela23": "https://discord.com/api/webhooks/1369820945899982961/k8cPGnBhj9b0Rj6dNo10QeneYDlXI0UIbDsYunI3w_nEsVp2VxmDYl4ZxYhgEFdWpwSE",
-        "João Morgado": "https://discord.com/api/webhooks/1369814971638218872/A6mFy2mqw2tTZtf16DQ4YXq9NgouAuHvdFuer8bEIPuacUJEtzA88cO5tHSm8vhrTdow",^
+        "João Morgado": "https://discord.com/api/webhooks/1369814971638218872/A6mFy2mqw2tTZtf16DQ4YXq9NgouAuHvdFuer8bEIPuacUJEtzA88cO5tHSm8vhrTdow",
         "JONSIE": "https://discord.com/api/webhooks/1369795226851344475/uyOWSGtAl8E4pykxEmmDxP3ppG4bXxJiADrFUZu5fIMImE1V8G_mYMlrHw3jULDmcDvy",
         "KaiZen": "https://discord.com/api/webhooks/1369815208054489088/iWJZN5A0x_HNzS7lesfy0dEg7fqPGo6phSWvES0xCbwsSFmAgwitewXfukDZIUDhPyjv",
         "Kapinha do Povo": "https://discord.com/api/webhooks/1369795228902621284/R1nW0rHNFhIT4PyNfn-Hsf6YKCdDZuHezT01jzgaap0ulvC_XntUALfIuV0Pq9UyPL_b",
@@ -271,11 +271,11 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         "Mac-bride77": "https://discord.com/api/webhooks/1369815204149596190/Gpra5Z4OxeNHpsMy9dlioDXAzb8ubbgT5G4OJVrE4ETiZQUm5_cGHY0pyYNoZF49py_4",
         "ManoBreak": "https://discord.com/api/webhooks/1369815211653206047/7zsypaY18_3Y_Tna3MyfpyiwcDtTcVbmHG8gRrmsd4OGzsyf-bbpYxSk7R6ktlPUE24G",
         "mario5pt": "https://discord.com/api/webhooks/1369815215369228330/blWqJ06v3Z5rs4aoykfJH8egIa3UKYSrtfssi9-i5PjV54NMnO4KENSNVwAgVoolNPJJ",
-        "maste2435": "https://discord.com/api/webhooks/1369815396164567140/zpzVltriRRL0iF0YySyS9t_M0SIdJFKBBy55o6_xEcvKv4gvzyXdgpA9ccXSoI7V7J2G",^
+        "maste2435": "https://discord.com/api/webhooks/1369815396164567140/zpzVltriRRL0iF0YySyS9t_M0SIdJFKBBy55o6_xEcvKv4gvzyXdgpA9ccXSoI7V7J2G",
         "Master Roshi": "https://discord.com/api/webhooks/1369795218093641748/3pu2atmJWnRLI8_Ip491HM3UF47u9RTkXaceWm4K9cBhla4_aSRnhTUPDamD5tZiUgoh",
         "Modivas": "https://discord.com/api/webhooks/1369795211412377600/jVr5pwAv-rKVh_v_SbeluDu0oXWtVmHE6WkkO5bWMqktikM6SKm299HzJNYBQsYWbHoZ",
         "Moita29": "https://discord.com/api/webhooks/1369795213861589196/OTA271Gn_PplWZhhyyBiKAN7sXaobsQmZf0rtstQtiprodnjkOHQbm8GibGPaUTcXnj6",
-        "MotorSport": "https://discord.com/api/webhooks/1369815524405415939/XYOs80LNHeAC5aqv1b-ZOyCVqFrKQu6E4VKXwge1WAbk96O2DUNhtupS0AelfTjzNXjH",^
+        "MotorSport": "https://discord.com/api/webhooks/1369815524405415939/XYOs80LNHeAC5aqv1b-ZOyCVqFrKQu6E4VKXwge1WAbk96O2DUNhtupS0AelfTjzNXjH",
         "- Neurologic.": "https://discord.com/api/webhooks/1369815533763039262/YK40ZdBQgYwt0LRAtQko_y3oyIG1avm4NVfqsJrEKdGpCzYPZQfV9QF8KKgTFLR9P1-3",
         "-N i n g u é M ?": "https://discord.com/api/webhooks/1369815537819058227/oDyrxdz8GmVJRK3ch9eopZPcstDBZ8kXGA8sC08kpMPBbTd6m8v668-xSg54d8z1D3Cj",
         "No limits": "https://discord.com/api/webhooks/1369795692524208228/Y12ZIg5gLpA00rjEXpDIgYaUsw_tMb12GpDF4IJnUvDmDM-l5v0lEmf7T4ZK8gODEYTQ",
