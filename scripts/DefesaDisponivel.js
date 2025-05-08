@@ -248,17 +248,18 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
 
     // 4) Envia para o webhook correto
     $.ajax({
-        url: webhookURL,
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(embedData),
-        success: function () {
-            alert("Defesa compartilhada com a liderança!");
-        },
-        error: function () {
-            alert("Houve um erro ao enviar os dados para o Discord.");
-        }
-    });
+  url: webhookURL,
+  method: 'POST',
+  contentType: 'application/json',
+  data: JSON.stringify(embedData),
+  success: function() {
+    alert("✅ Defesa compartilhada com a liderança!");
+  },
+  error: function(jqXHR, textStatus, errorThrown) {
+    console.error("Erro ao enviar para o Discord:", textStatus, errorThrown, jqXHR.responseText);
+    alert("❌ Não foi possível partilhar a defesa: " + errorThrown);
+  }
+});
 }
         // Helper: Prepare UI
         function prepareContent(totalTroopsAtHome, bbCode) {
