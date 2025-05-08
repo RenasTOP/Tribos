@@ -111,7 +111,13 @@ function buildUI() {
     Partilhar defesa disponível no ticket
   </button>
 `;
+// Remove o botão antigo (se existir) para não duplicar
+jQuery('#sendToDiscord').remove();
+
+// Acrescenta o novo
 jQuery('.ra-own-home-troops-count').append(discordButton);
+
+// Liga-lhe o handler
 jQuery('#sendToDiscord').on('click', () => {
   sendDefensiveTroopsToDiscord(totalTroopsAtHome);
 });
