@@ -3,118 +3,19 @@ if (typeof DEBUG !== 'boolean') DEBUG = false;
 
 // Script Config
 var scriptConfig = {
-    scriptData: {
-        prefix: 'ownHomeTroopsCount',
-        name: 'Own Home Troops Count',
-        version: 'v1.3.1',
-        author: 'RedAlert',
-        authorUrl: 'https://twscripts.dev/',
-        helpLink:
-            'https://forum.tribalwars.net/index.php?threads/own-home-troops-count.286618/',
-    },
-    translations: {
-        en_DK: {
-            'Own Home Troops Count': 'Own Home Troops Count',
-            Help: 'Help',
-            'Redirecting...': 'Redirecting...',
-            'There was an error!': 'There was an error!',
-            'Premium Account is required for this script to run!':
-                'Premium Account is required for this script to run!',
-            'Offensive Troops': 'Offensive Troops',
-            'Defensive Troops': 'Defensive Troops',
-            'Export Troop Counts': 'Export Troop Counts',
-            'Spear fighters': 'Spear fighters',
-            Swordsmen: 'Swordsmen',
-            Axemen: 'Axemen',
-            Archers: 'Archers',
-            Scouts: 'Scouts',
-            'Light cavalry': 'Light cavalry',
-            'Mounted archers': 'Mounted archers',
-            'Heavy cavalry': ' Heavy cavalry',
-            Rams: 'Rams',
-            Catapults: 'Catapults',
-            Paladin: 'Paladin',
-            Noblemen: 'Noblemen',
-            'Current Group:': 'Current Group:',
-            'Save Settings': 'Save Settings',
-            Settings: 'Settings',
-            'Spears amount': 'Spears amount',
-            'Swords amount': 'Swords amount',
-            'Archers amount': 'Archers amount',
-            'Heavy cavalry amount': 'Heavy cavalry amount',
-            'Settings saved!': 'Settings saved!',
-            Packets: 'Packets',
-        },
-        it_IT: {
-            'Own Home Troops Count': 'Contatruppe in casa',
-            Help: 'Aiuto',
-            'Redirecting...': 'Redirecting...',
-            'There was an error!': 'There was an error!',
-            'Premium Account is required for this script to run!':
-                'Ã‰ necessario un account premium per utilizzare questo script!',
-            'Offensive Troops': 'Truppe Offensive',
-            'Defensive Troops': 'Truppe Difensive',
-            'Export Troop Counts': 'Esporta conteggio truppe',
-            'Spear fighters': 'Lancieri',
-            Swordsmen: 'Spadaccini',
-            Axemen: 'Guerrieri con ascia',
-            Archers: 'Arcieri',
-            Scouts: 'Esploratori',
-            'Light cavalry': 'Cavalleria leggera',
-            'Mounted archers': 'Arcieri a cavallo',
-            'Heavy cavalry': 'Cavalleria pesante',
-            Rams: 'Arieti',
-            Catapults: 'Catapulte',
-            Paladin: 'Paladini',
-            Noblemen: 'Nobili',
-            'Current Group:': 'Gruppo Corrente:',
-            'Save Settings': 'Salva le impostazioni',
-            Settings: 'Impostazioni',
-            'Spears amount': 'QuantitÃ  Lancieri',
-            'Swords amount': 'QuantitÃ  Spadaccini',
-            'Archers amount': 'QuantitÃ  Arcieri',
-            'Heavy cavalry amount': 'QuantitÃ  Cavalleria pesante',
-            'Settings saved!': 'Impostazioni salvate!',
-            Packets: 'Packets',
-        },
-        fr_FR: {
-            'Own Home Troops Count': 'Comptage des troupes dans le village',
-            Help: 'Aide',
-            'Redirecting...': 'Redirecting...',
-            'There was an error!': 'There was an error!',
-            'Premium Account is required for this script to run!':
-                "Un compte Premium est requis pour que ce script s'exÃ©cute!",
-            'Offensive Troops': 'Troupes offensives',
-            'Defensive Troops': 'Troupes dÃ©fensives',
-            'Export Troop Counts': 'Export Troop Counts',
-            'Spear fighters': 'Lanciers',
-            Swordsmen: 'P.E',
-            Axemen: 'Hache',
-            Archers: 'Archer',
-            Scouts: 'Scouts',
-            'Light cavalry': 'Cavalerie lÃ©gÃ¨re',
-            'Mounted archers': 'Archer montÃ©',
-            'Heavy cavalry': ' Cavalerie lourde',
-            Rams: 'BÃ©lier',
-            Catapults: 'Catapulte',
-            Paladin: 'Paladin',
-            Noblemen: 'Noble',
-            'Current Group:': 'Groupe actuel:',
-            'Save Settings': 'Enregistrer les paramÃ¨tres',
-            Settings: 'ParamÃ¨tres',
-            'Spears amount': 'Montant lanciers',
-            'Swords amount': 'Montant P.E',
-            'Archers amount': 'Montant Archer',
-            'Heavy cavalry amount': 'Montant cavalerie lourde',
-            'Settings saved!': 'ParamÃ¨tres sauvegardÃ©s!',
-            Packets: 'Paquets',
-        },
-    },
-    allowedMarkets: [],
-    allowedScreens: ['overview_villages'],
-    allowedModes: ['combined'],
-    isDebug: DEBUG,
-    enableCountApi: true,
+  scriptData: {
+    prefix: 'ownHomeTroopsCount',
+    name:   'Contagem de Tropas em Casa',
+    version:'v1.3.1',
+    author: 'RedAlert',
+    authorUrl: 'https://twscripts.dev/',
+    helpLink:  'https://forum.tribalwars.net/index.php?threads/own-home-troops-count.286618/'
+  },
+  allowedMarkets:   [],
+  allowedScreens:   ['overview_villages'],
+  allowedModes:     ['combined'],
+  isDebug:          DEBUG,
+  enableCountApi:   true
 };
 
 $.getScript(
@@ -133,18 +34,14 @@ $.getScript(
                     if (isValidScreen && isValidMode) {
                         buildUI();
                     } else {
-                        UI.InfoMessage(twSDK.tt('Redirecting...'));
+                        UI.InfoMessage('Redirecionando...');
                         twSDK.redirectTo('overview_villages&mode=combined');
                     }
                 } else {
-                    UI.ErrorMessage(
-                        twSDK.tt(
-                            'Premium Account is required for this script to run!'
-                        )
-                    );
+                    UI.ErrorMessage('É necessário ter conta Premium para usar este script!');
                 }
             } catch (error) {
-                UI.ErrorMessage(twSDK.tt('There was an error!'));
+                UI.ErrorMessage('Ocorreu um erro inesperado!');
                 console.error(`${scriptInfo} Error:`, error);
             }
         })();
@@ -352,7 +249,7 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
 
             return `
                 <div class="ra-mb15">
-                    <h4>${twSDK.tt('Offensive Troops')}</h4>
+                    <h4>Tropas Ofensivas</h4>
                     <table width="100%" class="ra-table">
                         <thead>
                             <tr>
@@ -407,7 +304,7 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
                     </table>
                 </div>
                 <div class="ra-mb15">
-                    <h4>${twSDK.tt('Defensive Troops')}</h4>
+                    <h4>Tropas Defensivas</h4>
                     <table width="100%" class="ra-table">
                         <thead>
                             <tr>
@@ -462,7 +359,7 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
                     </table>
                 </div>
                 <div>
-                    <h4>${twSDK.tt('Export Troop Counts')}</h4>
+                    <h4>Exportar Contagem de Tropas</h4>
                     <textarea readonly class="ra-textarea">${bbCode.trim()}</textarea>
                 </div>
             `;
@@ -560,12 +457,8 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         // Helper: Get Troops BB Code
         function getTroopsBBCode(totalTroopsAtHome) {
             const currentGroup = jQuery('strong.group-menu-item').text();
-            let bbCode = `[b]${twSDK.tt(
-                'Own Home Troops Count'
-            )} (${getServerTime()})[/b]\n`;
-            bbCode += `[b]${twSDK.tt(
-                'Current Group:'
-            )}[/b] ${currentGroup}\n\n`;
+            let bbCode = `[b]Contagem de Tropas em Casa (${getServerTime()})[/b]\n`;
+            bbCode += `[b]Grupo Atual:[/b] ${currentGroup}\n\n`;
             for (let [key, value] of Object.entries(totalTroopsAtHome)) {
                 bbCode += `[unit]${key}[/unit] [b]${twSDK.formatAsNumber(
                     value
@@ -581,27 +474,24 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
             return serverDate + ' ' + serverTime;
         }
 
-        // Helper: Get unit label by unit key
+        // Helper: Get unit label by unit key (PT-PT)
         function getUnitLabel(key) {
             const unitLabel = {
-                spear: twSDK.tt('Spear fighters'),
-                sword: twSDK.tt('Swordsmen'),
-                axe: twSDK.tt('Axemen'),
-                archer: twSDK.tt('Archers'),
-                spy: twSDK.tt('Scouts'),
-                light: twSDK.tt('Light cavalry'),
-                marcher: twSDK.tt('Mounted archers'),
-                heavy: twSDK.tt('Heavy cavalry'),
-                ram: twSDK.tt('Rams'),
-                catapult: twSDK.tt('Catapults'),
-                knight: twSDK.tt('Paladin'),
-                snob: twSDK.tt('Noblemen'),
+            spear:    'Lanceiros',
+            sword:    'Espadachins',
+            axe:      'Vikings',
+            archer:   'Arqueiros',
+            spy:      'Batedores',
+            light:    'Cavalaria Leve',
+            marcher:  'Arqueiros Montados',
+            heavy:    'Cavalaria Pesada',
+            ram:      'Aríetes',
+            catapult: 'Catapultas',
+            knight:   'Paladinos',
+            snob:     'Nobres'
             };
-
-            if (unitLabel[key] !== undefined) {
-                return unitLabel[key];
-            } else {
-                return '';
+            // devolve o rótulo correcto ou, se não existir, string vazia
+            return unitLabel[key] || '';
             }
         }
     }
