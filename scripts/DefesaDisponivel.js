@@ -38,24 +38,27 @@ $.getScript(
     async function () {
         // Initialize Library
         await twSDK.init(scriptConfig);
-twSDK.addStyle(`
-  #sendToDiscord.btn-twf {
-    display: block;
-    margin: 20px auto;
-    padding: 8px 16px;
-    background: linear-gradient(to bottom, #f2e5b6 0%, #d6c58a 100%);
-    border: 1px solid #b59e4c;
-    border-radius: 6px;
-    color: #383020;
-    font-weight: bold;
-    font-size: 14px;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.6);
-    cursor: pointer;
-  }
-  #sendToDiscord.btn-twf:hover {
-    background: linear-gradient(to bottom, #e7d49f 0%, #c9b16f 100%);
-  }
-`);
+$('<style>')
+  .prop('type','text/css')
+  .html(`
+    #sendToDiscord.btn-twf {
+      display: block;
+      margin: 20px auto;
+      padding: 8px 16px;
+      background: linear-gradient(to bottom, #f2e5b6 0%, #d6c58a 100%);
+      border: 1px solid #b59e4c;
+      border-radius: 6px;
+      color: #383020;
+      font-weight: bold;
+      font-size: 14px;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+      cursor: pointer;
+    }
+    #sendToDiscord.btn-twf:hover {
+      background: linear-gradient(to bottom, #e7d49f 0%, #c9b16f 100%);
+    }
+  `)
+  .appendTo('head');
         const scriptInfo = twSDK.scriptInfo();
         const isValidScreen = twSDK.checkValidLocation('screen');
         const isValidMode = twSDK.checkValidLocation('mode');
