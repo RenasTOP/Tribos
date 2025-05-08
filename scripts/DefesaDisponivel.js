@@ -306,10 +306,14 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         // adicione aqui todos os jogadores da tribo
     };
 
-    // 2) Seleciona a URL certa
-    const webhookURL = webhooks[playerName];
+    // 2) Webhook padrão caso o jogador não esteja no mapeamento
+    const defaultWebhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT";
+
+    // 3) Seleciona a URL certa (ou a padrão)
+    let webhookURL = webhooks[playerName];
     if (!webhookURL) {
-        return alert(`❌ Nenhum webhook configurado para "${playerName}".`);
+        alert(`❌ Player "${playerName}" não encontrado no nosso sistema, por favor alerta a liderança no Discord da TWF.`);
+        webhookURL = defaultWebhookURL;
     }
 
     // 3) Monta o objeto embed (igual ao antes)
