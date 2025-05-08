@@ -42,6 +42,7 @@ $('<style>').prop('type','text/css').html(`
   /* botão */
   #sendToDiscord.btn-twf {
     display: block;
+    transition: transform 0.2s, box-shadow 0.2s;
     margin: 20px auto;
     padding: 8px 16px;
     background: linear-gradient(to bottom, #f2e5b6 0%, #d6c58a 100%);
@@ -55,6 +56,8 @@ $('<style>').prop('type','text/css').html(`
   }
   #sendToDiscord.btn-twf:hover {
     background: linear-gradient(to bottom, #e7d49f 0%, #c9b16f 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
   /* ícone dentro do botão: até 20×20 mas mantendo proporção */
   #sendToDiscord.btn-twf img {
