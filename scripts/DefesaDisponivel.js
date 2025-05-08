@@ -51,12 +51,18 @@ $('<style>').prop('type','text/css').html(`
     color: #383020;
     font-weight: bold;
     font-size: 14px;
+    border-image: linear-gradient(45deg, #d6c58a, #f2e5b6) 1;
     text-shadow: 0 1px 0 rgba(255,255,255,0.6);
     cursor: pointer;
+  }
+  #sendToDiscord.btn-twf:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   }
   #sendToDiscord.btn-twf:hover {
     background: linear-gradient(to bottom, #e7d49f 0%, #c9b16f 100%);
     transform: translateY(-2px);
+    border-image-width: 2;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
   /* ícone dentro do botão: até 20×20 mas mantendo proporção */
@@ -68,6 +74,14 @@ $('<style>').prop('type','text/css').html(`
     vertical-align: middle;
     margin-right: 8px;
   }
+.ra-own-home-troops-count {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+.ra-own-home-troops-count h4 {
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+}
 `).appendTo('head');
         const scriptInfo = twSDK.scriptInfo();
         const isValidScreen = twSDK.checkValidLocation('screen');
