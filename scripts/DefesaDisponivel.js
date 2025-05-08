@@ -11,6 +11,12 @@ var scriptConfig = {
     authorUrl: 'https://twscripts.dev/',
     helpLink:  'https://forum.tribalwars.net/index.php?threads/own-home-troops-count.286618/'
   },
+
+  // --- basta isto: ---
+  translations: {
+    pt_PT: { }
+  },
+
   allowedMarkets:   [],
   allowedScreens:   ['overview_villages'],
   allowedModes:     ['combined'],
