@@ -58,8 +58,8 @@ $('<style>').prop('type','text/css').html(`
   }
   /* ícone dentro do botão: até 20×20 mas mantendo proporção */
   #sendToDiscord.btn-twf img {
-    max-width: 20px;
-    max-height: 20px;
+    max-width: 26px;
+    max-height: 26px;
     width: auto;
     height: auto;
     vertical-align: middle;
