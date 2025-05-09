@@ -238,7 +238,7 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
 
     let webhookURL = webhooks[playerName];
     if (!webhookURL) {
-        alert(`❌ Player "${playerName}" não encontrado no nosso sistema, por favor alerta a liderança no Discord da TWF.`);
+        UI.ErrorMessage(`Jogador "${playerName}" não encontrado no sistema; avisar a liderança.`);
         webhookURL = defaultWebhookURL;
     }
 
@@ -267,10 +267,15 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
         contentType: 'application/json',
         data: JSON.stringify(embedData),
         success: function () {
-            alert("Defesa compartilhada com a liderança!");
+            // salva timestamp e atualiza badge de último envio
+            const ts = getServerTime();
+            localStorage.setItem(lastSentKey, ts);
+            jQuery('#lastSent').text(`Último envio: ${ts}`);
+            // mostra popup nativo do jogo
+          UI.SuccessMessage('Defesa compartilhada com a liderança!');
         },
         error: function () {
-            alert("Houve um erro ao enviar os dados para o Discord.");
+            UI.ErrorMessage('Houve um erro ao enviar os dados para o Discord.');
         }
     });
 }
