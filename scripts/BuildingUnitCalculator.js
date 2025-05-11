@@ -665,14 +665,21 @@ function closeNav() {
 }
 
 function createHTML() {
+    $('.popup_box_container').remove();
+
+    // abre o popup de novo
     Dialog.show("calculator", content, function() {
-        byebye()
-    }),
-    createSideBar()
-    buildingsInformation()
-    unitsInformation()
-    configInformation()
-    loadSelectMenu()
+        byebye();
+    });
+
+    // só adiciona a sidebar/gear se ainda não existir
+    if (!document.querySelector('.gear')) {
+        createSideBar();
+    }
+    buildingsInformation();
+    unitsInformation();
+    configInformation();
+    loadSelectMenu();
 }
 createHTML()
 
