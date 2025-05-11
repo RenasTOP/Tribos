@@ -1658,13 +1658,20 @@ async function haulBonus() {
 
 // calcula o bónus de população
 async function popBonus() {
-    var result = await population();
+    var oldPop          = await population();
     var popBonusVillage = Number($("#popBonusVillage").val());
-    var popFlag = Number($("#popFlag").val());
-    var popInventory = Number($("#popInventory").val());
-    var oldPop = result;
-    var newPop = oldPop * (1 + popBonusVillage / 100) * (1 + popFlag / 100) * (1 + popInventory / 100);
-    $("#population").text(numberWithCommas(roundDownToNearestInteger(newPop)));
+    var popFlag         = Number($("#popFlag").val());
+    var popInventory    = Number($("#popInventory").val());
+
+    // somamos as percentagens antes de aplicar
+    var totalBonus = popBonusVillage + popFlag + popInventory;   // ex: 10 + 10 + 10 = 30
+    var newPop     = oldPop * (1 + totalBonus / 100);           // ex: *1.30
+
+    $("#population").text(
+      numberWithCommas(
+        roundDownToNearestInteger(newPop)
+      )
+    );
     return newPop;
 }
 
