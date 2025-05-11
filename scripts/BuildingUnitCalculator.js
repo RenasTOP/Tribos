@@ -681,7 +681,17 @@ function createHTML() {
     configInformation();
     loadSelectMenu();
 }
-createHTML()
+// ——— permite reabrir o popup sem redeclarar tudo ———
+if (!window._BUCALC_INITIALIZED) {
+  // primeira execução: marca como inicializado,
+  // associa createHTML() a openCalculator e abre a janela
+  window._BUCALC_INITIALIZED = true;
+  window.openCalculator = createHTML;
+  createHTML();
+} else {
+  // chamadas subsequentes: só reabre
+  window.openCalculator();
+}
 
 function createObject() {
     for (const key of buildings) {
