@@ -142,17 +142,16 @@ jQuery('#sendToDiscord').on('click', () => {
     }, 100);
 }
 
-// Função para enviar apenas as tropas defensivas para o Discord
 function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
-    const playerName = document.querySelector('#menu_row2 b')?.innerText?.trim() || game_data.player.name; 
+    const playerName = document.querySelector('#menu_row2 b')?.innerText?.trim() || game_data.player.name;
     const currentGroup = jQuery('strong.group-menu-item').text();
 
-    const defaultWebhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT";
+    const webhookURL = prompt("Por favor insere o teu Webhook do Discord:", "");
 
-    if (typeof webhookURL !== 'string' || !webhookURL.startsWith('https://discord.com/api/webhooks/')) {
-    alert("❌ Webhook inválido ou não definido. Por favor insere o teu webhook no botão da quickbar.");
-    return;
-}
+    if (!webhookURL || !webhookURL.startsWith('https://discord.com/api/webhooks/')) {
+        alert("❌ Webhook inválido ou não definido. O envio foi cancelado.");
+        return;
+    }
 
     const embedData = {
         content: `**Tropa Defensiva (Atualizado em: ${getServerTime()})**\n**Jogador:** ${playerName}`,
@@ -160,29 +159,28 @@ function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
             {
                 title: "**🛡️ TROPA DEFENSIVA**",
                 fields: [
-                    { name: "🗂️ **Grupo Atual**",      value: currentGroup,                  inline: false },
-                    { name: "<:lanceiro:1368839513891409972> **Lanceiros**",       value: `${totalTroopsAtHome.spear}`,   inline: true },
-                    { name: "<:espadachim:1368839514746785844> **Espadachins**",    value: `${totalTroopsAtHome.sword}`,   inline: true },
-                    { name: "<:batedor:1368839512423137404> **Batedores**",        value: `${totalTroopsAtHome.spy}`,     inline: true },
-                    { name: "<:pesada:1368839517997498398> **Cavalaria Pesada**",   value: `${totalTroopsAtHome.heavy}`,   inline: true },
-                    { name: "<:catapulta:1368839516441280573> **Catapultas**",      value: `${totalTroopsAtHome.catapult}`,inline: true },
-                    { name: "<:paladino:1368332901728391319> **Paladinos**",       value: `${totalTroopsAtHome.knight}`,  inline: true }
+                    { name: "🗂️ **Grupo Atual**", value: currentGroup, inline: false },
+                    { name: "<:lanceiro:1368839513891409972> **Lanceiros**", value: `${totalTroopsAtHome.spear}`, inline: true },
+                    { name: "<:espadachim:1368839514746785844> **Espadachins**", value: `${totalTroopsAtHome.sword}`, inline: true },
+                    { name: "<:batedor:1368839512423137404> **Batedores**", value: `${totalTroopsAtHome.spy}`, inline: true },
+                    { name: "<:pesada:1368839517997498398> **Cavalaria Pesada**", value: `${totalTroopsAtHome.heavy}`, inline: true },
+                    { name: "<:catapulta:1368839516441280573> **Catapultas**", value: `${totalTroopsAtHome.catapult}`, inline: true },
+                    { name: "<:paladino:1368332901728391319> **Paladinos**", value: `${totalTroopsAtHome.knight}`, inline: true }
                 ]
             }
         ]
     };
 
-    // 4) Envia para o webhook correto
     $.ajax({
         url: webhookURL,
         method: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(embedData),
         success: function () {
-            alert("Defesa compartilhada com a liderança!");
+            alert("✅ Defesa compartilhada com a liderança!");
         },
         error: function () {
-            alert("Houve um erro ao enviar os dados para o Discord.");
+            alert("❌ Houve um erro ao enviar os dados para o Discord.");
         }
     });
 }
