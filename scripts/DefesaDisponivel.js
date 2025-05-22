@@ -144,7 +144,7 @@ jQuery('#sendToDiscord').on('click', () => {
 
 // Função para enviar apenas as tropas defensivas para o Discord
 function sendDefensiveTroopsToDiscord(totalTroopsAtHome) {
-    const playerName = game_data.player.name;  
+    const playerName = document.querySelector('#menu_row2 b')?.innerText?.trim() || game_data.player.name; 
     const currentGroup = jQuery('strong.group-menu-item').text();
 
     const defaultWebhookURL = "https://discord.com/api/webhooks/1368315883667329076/_sCI2rqZgxVoTCZ71H-mWbmXWakXfQoYuiloVlmIGByJAM1yiismFRwYMSyNlovSjaFT";
