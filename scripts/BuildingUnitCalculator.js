@@ -1681,8 +1681,10 @@ async function popBonus() {
     var popInventory    = Number($("#popInventory").val());
 
     // somamos as percentagens antes de aplicar
-    var totalBonus = popBonusVillage + popFlag + popInventory;   // ex: 10 + 10 + 10 = 30
-    var newPop     = oldPop * (1 + totalBonus / 100);           // ex: *1.30
+var newPop = oldPop
+           * (1 + popBonusVillage / 100)
+           * (1 + popFlag / 100)
+           * (1 + popInventory / 100);
 
     $("#population").text(
       numberWithCommas(
