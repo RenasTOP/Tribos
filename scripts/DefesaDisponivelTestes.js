@@ -1,95 +1,73 @@
-// Script Configuração
-var strVersion = 'v1.0';
-var unitDesc = {
-    spear: 'Spear fighters',
-    sword: 'Swordsmen',
-    axe: 'Axemen',
-    archer: 'Archers',
-    spy: 'Scouts',
-    light: 'Light cavalry',
-    marcher: 'Mounted archers',
-    heavy: 'Heavy cavalry',
-    ram: 'Rams',
-    catapult: 'Catapults',
-    knight: 'Paladin',
-    snob: 'Noblemen',
-};
-
-if (typeof unitConfig == 'undefined') {
-    unitConfig = fnCreateUnitConfig();
-}
-
 // Função para verificar se estamos na tela correta
 function checkScreen(userScreen, userMode) {
     const currentLocation = window.location.href;
     const url = new URL(currentLocation);
     const gameScreen = url.searchParams.get('screen');
     const gameMode = url.searchParams.get('mode');
-    if (gameScreen === userScreen && gameMode === userMode) {
-        return true;
-    }
-    return false;
+    return gameScreen === userScreen && gameMode === userMode;
 }
 
 // Função para executar o script
 function fnExecuteScript() {
     var isTroopsOverviewScreen = checkScreen('overview_villages', 'units');
     if (isTroopsOverviewScreen) {
+        alert('Script is running on the correct page.');
         fnCalculateTroopCount();
     } else {
-        UI.ErrorMessage(
-            'Script must be run from the Troops Overview screen.',
-            5000
-        );
+        UI.ErrorMessage('Script must be run from the Troops Overview screen.', 5000);
     }
 }
 
 // Função para coletar dados de tropas
 function fnGetTroopCount() {
-    var gameVersion = parseFloat(game_data.version.split(' ')[1].replace('release_', ''));
-    var colCount = $('#units_table thead th').length - 2;
-    var villageTroopInfo = [];
+    const villageTroopInfo = [];
+    // Acessar as linhas da tabela de unidades
+    const rows = $('#units_table tbody tr');
     
-    $('#units_table > tbody').each(function (row) {
-        $(this).find('tr:last').remove();
-    });
-
-    $('#units_table tbody').each(function (row, eleRow) {
-        var villageData = { troops: Array(12).fill(0) };
-        var coords = $(eleRow).find('td:eq(0)').text().match(/\d+\|\d+/g);
-        coords = coords ? coords[coords.length - 1].match(/(\d+)\|(\d+)/) : null;
-        villageData.x = parseInt(coords[1], 10);
-        villageData.y = parseInt(coords[2], 10);
-        villageData.coords = coords[0];
-
-        $(eleRow).find('td:gt(0):not(:has(>a))').each(function (cell, eleCell) {
-            if (Math.floor(cell / colCount) != 1) {
-                if (Math.floor(cell / colCount) != 0) {
-                    villageData.troops[(cell % colCount) - 1] += parseInt($(eleCell).text() || '0', 10);
-                }
+    // Se não encontrar as linhas da tabela, retorna um alerta
+    if (rows.length === 0) {
+        alert('No rows found in the units table.');
+    }
+    
+    rows.each(function () {
+        const rowData = { troops: [] };
+        $(this).find('td').each(function (index) {
+            // Excluindo as primeiras duas colunas
+            if (index > 0) {
+                const troopCount = parseInt($(this).text() || '0', 10);
+                rowData.troops.push(troopCount);
             }
         });
 
-        villageTroopInfo.push(villageData);
+        villageTroopInfo.push(rowData);
     });
 
+    alert('Troops collected: ' + JSON.stringify(villageTroopInfo)); // Exibir os dados coletados
     return villageTroopInfo;
 }
 
 // Função para calcular e exibir a contagem de tropas
 function fnCalculateTroopCount() {
     const villageTroops = fnGetTroopCount();
+    
+    // Verifica se houve coleta de dados
+    if (villageTroops.length === 0) {
+        alert('No troops data collected.');
+        return;
+    }
+
     const summary = {
         offense: 0,
         defense: 0,
     };
 
     villageTroops.forEach(village => {
-        summary.offense += village.troops[1] + village.troops[3];  // Exemplo de tropa ofensiva
-        summary.defense += village.troops[0] + village.troops[2];  // Exemplo de tropa defensiva
+        // Considerando que as tropas ofensivas e defensivas estão nas colunas correspondentes
+        summary.offense += village.troops[1] + village.troops[3];  // Exemplo de tropas ofensivas
+        summary.defense += village.troops[0] + village.troops[2];  // Exemplo de tropas defensivas
     });
 
-    // Exibição das contagens
+    // Exibir o resumo das tropas
     const troopsContent = `
         <h3>Tropa Ofensiva</h3>
         <p>${summary.offense} Troops</p>
