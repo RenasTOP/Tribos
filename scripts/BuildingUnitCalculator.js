@@ -479,6 +479,8 @@ content = `
                 <input type="button" value="Guardar" onclick="store()">
                 &nbsp;
                 <input type="button" value="Eliminar" onclick="removeOptions()">
+		&nbsp;
+		<input type="button" value="Renomear" onclick="renameProfile()">
                 &nbsp;
                 <input type="button" value="Exportar" onclick="exports()">
                 &nbsp;
@@ -1109,6 +1111,34 @@ function removeOptions() {
             localStorage.removeItem(key);
         }
     } 
+}
+
+function renameProfile() {
+    var item = $("#sablon").find(":selected");
+    var oldName = item.text();
+
+    if (oldName === "opções") {
+        createMessage("ErrorMessage", "Seleciona primeiro um perfil!", 2000);
+        return;
+    }
+
+    var newName = prompt("Novo nome para o perfil:", oldName);
+    if (!newName || newName.trim() === "") return;
+
+    var oldKey = `öregsaver_${oldName}`;
+    var newKey = `öregsaver_${newName}`;
+
+    if (localStorage.getItem(newKey)) {
+        createMessage("ErrorMessage", "Já existe um perfil com esse nome!", 2000);
+        return;
+    }
+
+    var data = localStorage.getItem(oldKey);
+    localStorage.removeItem(oldKey);
+    localStorage.setItem(newKey, data);
+
+    $("#sablon option:not([hidden])").remove();
+    loadSelectMenu();
 }
 
 // exporta o perfil selecionado
