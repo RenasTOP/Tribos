@@ -59,45 +59,47 @@ $.getScript(`https://twscripts.dev/scripts/twSDK.js?url=${document.currentScript
 
     // Render: Build the user interface
     function buildUI() {
-        const homeTroops = collectTroopsAtHome();
-        console.log('Collected Home Troops:', homeTroops);  // Debugging log
-
-        const totalTroopsAtHome = getTotalHomeTroops(homeTroops);
-        console.log('Total Troops:', totalTroopsAtHome);  // Debugging log
-
-        const bbCode = getTroopsBBCode(totalTroopsAtHome);
-        const content = prepareContent(totalTroopsAtHome, bbCode);
-
-        // Render the widget with collected data
-        twSDK.renderBoxWidget(content, scriptConfig.scriptData.prefix, 'ra-own-home-troops-count');
-
-        // Add Discord button
-        const discordButton = `
-            <button id="sendToDiscord" class="btn-twf">
-                <img src="https://i.imgur.com/8n7jRL9.png" alt="TWF">
-                Partilhar defesa disponível no ticket
-            </button>
-        `;
-        // Remove any existing button
-        jQuery('#sendToDiscord').remove();
-
-        // Add new button
-        jQuery('.ra-own-home-troops-count').append(discordButton);
-
-        // Button click handler
-        jQuery('#sendToDiscord').on('click', () => {
-            sendDefensiveTroopsToDiscord(totalTroopsAtHome);
-        });
-
-        // Delay to handle non-archer and non-paladin worlds
         setTimeout(() => {
-            if (!game_data.units.includes('archer')) {
-                jQuery('.archer-world').hide();
-            }
-            if (!game_data.units.includes('knight')) {
-                jQuery('.paladin-world').hide();
-            }
-        }, 100);
+            const homeTroops = collectTroopsAtHome();
+            alert('Collected Home Troops: ' + JSON.stringify(homeTroops));  // Debugging log
+
+            const totalTroopsAtHome = getTotalHomeTroops(homeTroops);
+            alert('Total Troops: ' + JSON.stringify(totalTroopsAtHome));  // Debugging log
+
+            const bbCode = getTroopsBBCode(totalTroopsAtHome);
+            const content = prepareContent(totalTroopsAtHome, bbCode);
+
+            // Render the widget with collected data
+            twSDK.renderBoxWidget(content, scriptConfig.scriptData.prefix, 'ra-own-home-troops-count');
+
+            // Add Discord button
+            const discordButton = `
+                <button id="sendToDiscord" class="btn-twf">
+                    <img src="https://i.imgur.com/8n7jRL9.png" alt="TWF">
+                    Partilhar defesa disponível no ticket
+                </button>
+            `;
+            // Remove any existing button
+            jQuery('#sendToDiscord').remove();
+
+            // Add new button
+            jQuery('.ra-own-home-troops-count').append(discordButton);
+
+            // Button click handler
+            jQuery('#sendToDiscord').on('click', () => {
+                sendDefensiveTroopsToDiscord(totalTroopsAtHome);
+            });
+
+            // Delay to handle non-archer and non-paladin worlds
+            setTimeout(() => {
+                if (!game_data.units.includes('archer')) {
+                    jQuery('.archer-world').hide();
+                }
+                if (!game_data.units.includes('knight')) {
+                    jQuery('.paladin-world').hide();
+                }
+            }, 100);
+        }, 1000);  // Delay of 1 second to ensure page is fully loaded
     }
 
     // Function to send defensive troops to Discord
@@ -236,21 +238,21 @@ $.getScript(`https://twscripts.dev/scripts/twSDK.js?url=${document.currentScript
             let rowTroops = {};
 
             combinedTableHeader.forEach((tableHeader, index) => {
-                if (tableHeader) {
-                    if (tableHeader.includes('unit_')) {
-                        const unitType = tableHeader.replace('unit_', '');
-                        rowTroops = {
-                            ...rowTroops,
-                            [unitType]: parseInt(
-                                jQuery(this).find(`td:eq(${index})`).text()
-                            ),
-                        };
-                    }
+                if (tableHeader && tableHeader.includes('unit_')) {
+                    const unitType = tableHeader.replace('unit_', '');
+                    rowTroops = {
+                        ...rowTroops,
+                        [unitType]: parseInt(
+                            jQuery(this).find(`td:eq(${index})`).text()
+                        ),
+                    };
                 }
             });
 
             homeTroops.push(rowTroops);
         });
+
+        alert('Collected Troops: ' + JSON.stringify(homeTroops));  // Debugging log
 
         return homeTroops;
     }
