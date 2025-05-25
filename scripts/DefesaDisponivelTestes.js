@@ -60,7 +60,11 @@ $.getScript(`https://twscripts.dev/scripts/twSDK.js?url=${document.currentScript
     // Render: Build the user interface
     function buildUI() {
         const homeTroops = collectTroopsAtHome();
+        console.log('Collected Home Troops:', homeTroops);  // Debugging log
+
         const totalTroopsAtHome = getTotalHomeTroops(homeTroops);
+        console.log('Total Troops:', totalTroopsAtHome);  // Debugging log
+
         const bbCode = getTroopsBBCode(totalTroopsAtHome);
         const content = prepareContent(totalTroopsAtHome, bbCode);
 
