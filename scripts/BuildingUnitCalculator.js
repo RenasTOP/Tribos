@@ -1078,15 +1078,24 @@ function store() {
             "inputs":    pre.array
     };
     localStorage.setItem(name, btoa(JSON.stringify(object)));
-    createOption(pre.name);
+    $("#sablon option:not([hidden])").remove(); // limpa opções antigas
+	loadSelectMenu(); // carrega ordenado novamente
 }
 
-// carrega os perfis guardados no menu suspenso
 function loadSelectMenu() {
-    for(var key in localStorage) {
-        if (key.includes("öregsaver")) {
-            createOption(key.split("_")[1]);
+    let saved = [];
+
+    for (let key in localStorage) {
+        if (key.includes("öregsaver_")) {
+            let name = key.split("_")[1];
+            saved.push(name);
         }
+    }
+
+    saved.sort((a, b) => a.localeCompare(b, 'pt-PT')); // ordenação alfabética portuguesa
+
+    for (let name of saved) {
+        createOption(name);
     }
 }
 
