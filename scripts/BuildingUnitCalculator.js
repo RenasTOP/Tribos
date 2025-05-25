@@ -117,6 +117,7 @@ content = `
     <th>Ferro</th>
     <th>População</th>
     <th>Pontos</th>
+    <th>Tempo</th>
 </tr>
 <tr>
     <td><img src=${imageSrc.main}>Edificio Principal</td>
@@ -126,6 +127,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.barracks}>Quartel</td>
@@ -135,6 +137,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.stable}>Estábulo</td>
@@ -144,6 +147,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.garage}>Oficina</td>
@@ -153,6 +157,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.church}>Igreja</td>
@@ -162,6 +167,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.church_f}>Primeira igreja</td>
@@ -171,6 +177,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.watchtower}>Torre de vigia</td>
@@ -180,6 +187,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.academy}>Academia</td>
@@ -189,6 +197,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.smith}>Ferreiro</td>
@@ -198,6 +207,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.place}>Praça de reunião</td>
@@ -207,6 +217,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.statue}>Estátua</td>
@@ -216,6 +227,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.market}>Mercado</td>
@@ -225,6 +237,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.timber_camp}>Bosque</td>
@@ -234,6 +247,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.clay_pit}>Poço de Argila</td>
@@ -243,6 +257,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.iron_mine}>Mina de Ferro</td>
@@ -252,6 +267,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.farm}>Fazenda</td>
@@ -261,6 +277,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.warehouse}>Armazém</td>
@@ -270,6 +287,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.hide}>Esconderijo</td>
@@ -279,6 +297,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td><img src=${imageSrc.wall}>Muralha</td>
@@ -288,6 +307,7 @@ content = `
     <td class="ironCost">0</td>
     <td class="popCost">0</td>
     <td class="points">0</td>
+    <td class="buildTime">00:00:00:00</td>
 </tr>
 <tr>
     <td></td>
@@ -1325,6 +1345,57 @@ function points() {
         }
     }
     return true;
+}
+
+// Nova função para calcular o tempo total de construção de um edifício
+function calculateBuildingTime(buildingId, buildingLevel, hqLevel, worldSpeed) {
+    const baseTime = obj.buildingsObj[buildingId].build_time; // em segundos
+    const buildTimeFactor = obj.buildingsObj[buildingId].build_time_factor;
+
+    let totalTimeSeconds = 0;
+
+    for (let level = 1; level <= buildingLevel; level++) {
+        let levelTime = baseTime * Math.pow(buildTimeFactor, level - 1);
+        levelTime = levelTime / (1 + 0.05 * hqLevel); // redução por HQ
+        levelTime = levelTime / worldSpeed; // ajuste por velocidade do mundo
+        totalTimeSeconds += levelTime;
+    }
+
+    return totalTimeSeconds;
+}
+
+// Mostra os tempos de construção de cada edifício
+function showBuildingTimes() {
+    const hqLevel = Number(document.getElementById("headquarters").value || 1);
+    const worldSpeed = obj.world.worldSpeed || 1;
+    const timeCells = document.querySelectorAll(".buildTime");
+
+    buildings.forEach((b, i) => {
+        const level = Number(document.getElementById(b)?.value || 0);
+        if (!obj.buildingsObj[b]?.exist || level === 0) {
+            if (timeCells[i]) timeCells[i].textContent = "00:00:00:00";
+            return;
+        }
+        const seconds = calculateBuildingTime(b, level, hqLevel, worldSpeed);
+        const human = secondsToDhms(Math.round(seconds));
+        if (timeCells[i]) timeCells[i].textContent = human;
+    });
+}
+
+// Atualiza as funções de edifícios para incluir tempos
+function buildingsFunctions() {
+    select(); 
+    woodCost(); 
+    stoneCost(); 
+    ironCost(); 
+    popCost(); 
+    sumPoints(); 
+    hiddenResources(); 
+    wallBonus(); 
+    marketBonus(); 
+    storageBonus(); 
+    resourceBonus(); 
+    showBuildingTimes();
 }
 
 // calcula o total de pontos da aldeia
