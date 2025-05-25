@@ -1148,13 +1148,24 @@ function renameProfile() {
 
 // exporta o perfil selecionado
 function exports() {
-    var item = $("#sablon").find(":selected");
-    var optionName = item.text();
-    if (optionName != "opções") {
-        var val = localStorage.getItem(`öregsaver_${optionName}`);
-        var key = optionName;
-        prompt(prompts.text,key + "," + val);
+    const item = $("#sablon").find(":selected");
+    const optionName = item.text();
+
+    if (!optionName || optionName === "opções") {
+        createMessage("ErrorMessage", "Seleciona primeiro um perfil!", 2000);
+        return;
     }
+
+    const key = `öregsaver_${optionName}`;
+    const val = localStorage.getItem(key);
+
+    if (!val) {
+        createMessage("ErrorMessage", "Erro: o perfil selecionado não foi encontrado.", 2000);
+        return;
+    }
+
+    const exportCode = `${optionName},${val}`;
+    prompt(prompts.text, exportCode);
 }
 
 // importa um perfil
@@ -1171,9 +1182,11 @@ function exportAllProfiles() {
 
     for (let key in localStorage) {
         if (key.startsWith("öregsaver_")) {
-            let name = key.split("_")[1];
+            let name = key.slice("öregsaver_".length); // extrai tudo após "öregsaver_"
             let data = localStorage.getItem(key);
-            allExports.push({ name: name, data: data });
+            if (name && data) {
+                allExports.push({ name, data });
+            }
         }
     }
 
