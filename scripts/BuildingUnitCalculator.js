@@ -758,28 +758,40 @@ function getBuildingsInformation() {
 }
 
 async function buildingsInformation() {
-	await createObject();
-	if (!getStorage("buildingsTimeUpdate") || Date.now() > getStorage("buildingsTimeUpdate") + 3600 * 1000) {
-		await getBuildingsInformation();
-		setTimeInStorage("buildingsTimeUpdate");
-	}
+    await createObject();
 
-	for (var i = 0; i < buildings.length; i++) {
-		for (var k = 0; k < datas.length; k++) {
-			data = parseData("buildingsConfig");
-			if ($(data).find(`config > ${buildings[i]}`).length > 0) {
-				config = Number($(data).find(`config > ${buildings[i]} > ${datas[k]}`)[0].innerHTML);
-				Object.defineProperty(obj.buildingsObj[buildings[i]], datas[k], { value: config });
-				Object.defineProperty(obj.buildingsObj[buildings[i]], "exist", { value: true });
-			} else {
-				disableBuilding(buildings[i]);
-				Object.defineProperty(obj.buildingsObj[buildings[i]], "exist", { value: false });
-				if (buildings[i] == "statue") {
-					disableUnit("knight");
-				}
-			}
-		}
-	}
+    if (!getStorage("buildingsTimeUpdate") || Date.now() > getStorage("buildingsTimeUpdate") + 3600 * 1000) {
+        await getBuildingsInformation();
+        setTimeInStorage("buildingsTimeUpdate");
+    }
+
+    const data = parseData("buildingsConfig");
+
+    for (let i = 0; i < buildings.length; i++) {
+        let buildingName = buildings[i];
+        let buildingTag = $(data).find(`config > ${buildingName}`);
+
+        if (buildingTag.length > 0) {
+            Object.defineProperty(obj.buildingsObj[buildingName], "exist", { value: true });
+
+            for (let k = 0; k < datas.length; k++) {
+                const field = datas[k];
+                const element = buildingTag.find(field)[0];
+                if (element) {
+                    const value = Number(element.innerHTML);
+                    Object.defineProperty(obj.buildingsObj[buildingName], field, { value });
+                }
+            }
+
+        } else {
+            disableBuilding(buildingName);
+            Object.defineProperty(obj.buildingsObj[buildingName], "exist", { value: false });
+
+            if (buildingName === "statue") {
+                disableUnit("knight");
+            }
+        }
+    }
 }
 
 // Recolher informações das unidades
