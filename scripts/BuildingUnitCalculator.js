@@ -487,10 +487,6 @@ content = `
                 <input type="button" value="Importar" onclick="imports()">
                 <b><code>Criado por <a href="${forumURL}" target="_blank">öreg</a> e traduzido por Renas</code></b>
 		<br/>
-		<small style="font-size:11px;">
-   		<a href="javascript:void(0)" onclick="exportAllProfiles()" style="opacity: 0.4;">Exportar todos</a> |
-    		<a href="javascript:void(0)" onclick="importAllProfiles()" style="opacity: 0.4;">Importar todos</a>
-		</small>
             </td>
         </tr>
     </tbody>
@@ -1175,56 +1171,7 @@ function imports() {
     var val = importCode.split(",")[1];
     localStorage.setItem(`öregsaver_${key}`, val);
     createOption(key);
-}
-
-function exportAllProfiles() {
-    let allExports = [];
-
-    for (let key in localStorage) {
-        if (key.startsWith("öregsaver_")) {
-            let name = key.slice("öregsaver_".length); // extrai tudo após "öregsaver_"
-            let data = localStorage.getItem(key);
-            if (name && data) {
-                allExports.push({ name, data });
-            }
-        }
-    }
-
-    if (allExports.length === 0) {
-        createMessage("ErrorMessage", "Não existem perfis para exportar.", 2000);
-        return;
-    }
-
-    const exportText = JSON.stringify(allExports);
-    prompt("Copia este código para importar noutro local:", exportText);
-}
-
-function importAllProfiles() {
-    let input = prompt("Cola aqui o código exportado:");
-
-    if (!input) return;
-
-    try {
-        const parsed = JSON.parse(input);
-
-        if (!Array.isArray(parsed)) throw "Formato inválido.";
-
-        for (let item of parsed) {
-            const name = item.name;
-            const data = item.data;
-            if (name && data) {
-                localStorage.setItem(`öregsaver_${name}`, data);
-            }
-        }
-
-        $("#sablon option:not([hidden])").remove();
-        loadSelectMenu();
-        createMessage("SuccessMessage", "Perfis importados com sucesso!", 2500);
-    } catch (e) {
-        createMessage("ErrorMessage", "O código de importação não é válido.", 2500);
-    }
-}
-
+}	
 // evento ao selecionar um perfil
 $("#sablon").on("click", function(event) {
     var item = $("#sablon").find(":selected");
